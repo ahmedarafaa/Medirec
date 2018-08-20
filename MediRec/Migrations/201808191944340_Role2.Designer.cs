@@ -7,13 +7,13 @@ namespace MediRec.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class InitialModel : IMigrationMetadata
+    public sealed partial class Role2 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Role2));
         
         string IMigrationMetadata.Id
         {
-            get { return "201808171621555_InitialModel"; }
+            get { return "201808191944340_Role2"; }
         }
         
         string IMigrationMetadata.Source

@@ -10,6 +10,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MediRec.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
+using MediRec.ViewModel;
+using System.Collections.Generic;
 
 namespace MediRec.Controllers
 {
@@ -18,15 +20,29 @@ namespace MediRec.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationRoleManager _roleManger;
 
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager )
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            RoleManager = roleManager;
+        }
+
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManger ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+            }
+            private set
+            {
+                _roleManger = value;
+            }
         }
 
         public ApplicationSignInManager SignInManager
@@ -73,6 +89,22 @@ namespace MediRec.Controllers
             {
                 return View(model);
             }
+
+            //Arafa Start
+            // Require the user to have a confirmed email before they can log on.
+            var user = await UserManager.FindByNameAsync(model.Email);
+            if (user != null)
+            {
+                if (!await UserManager.IsEmailConfirmedAsync(user.Id))
+                {
+                    //Arafa
+                    var resendConformation = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account");
+
+                    ViewBag.errorMessage = "You must have a confirmed email to log on.";
+                    return View("Error");
+                }
+            }
+            //Arafa End
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
@@ -135,11 +167,15 @@ namespace MediRec.Controllers
             }
         }
 
-        //
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register()
         {
+            List<SelectListItem> list = new List<SelectListItem>();
+            foreach (var role in RoleManager.Roles)
+                list.Add(new SelectListItem() { Value = role.Name, Text = role.Name });
+            ViewBag.Roles = list;
+
             return View();
         }
 
@@ -152,7 +188,15 @@ namespace MediRec.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    FullName = model.FullName,
+                    PhoneNumber = model.PhoneNumber,
+                    Gender = model.Gender,
+                    BirthDate = model.BirthDate/*,
+                    RoleName = "Doctor Clinic"*/
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -166,19 +210,112 @@ namespace MediRec.Controllers
                     //await UserManager.AddToRoleAsync(user.Id, RoleName.DevGroup);
 
                     //End
+                    //if(model.RoleName != null)
+                    //    result = await UserManager.AddToRolesAsync(user.Id, model.RoleName);
 
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false); by Arafa
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    
+                    //Arafa start
+                    var resendConformation = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account");
 
-                    return RedirectToAction("Index", "Home");
+
+                    ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
+                         + "before you can log in.";
+
+                    return View("Info");
+                    //return RedirectToAction("Index", "Home");//Arafa
                 }
                 AddErrors(result);
             }
+
+            List<SelectListItem> list = new List<SelectListItem>();
+            foreach (var role in RoleManager.Roles)
+                list.Add(new SelectListItem() { Value = role.Name, Text = role.Name });
+            ViewBag.Roles = list;
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+
+        // GET: /Account/RegisterDoctor
+        [AllowAnonymous]
+        public ActionResult RegisterDoctor()
+        {
+            List<SelectListItem> list = new List<SelectListItem>();
+            foreach (var role in RoleManager.Roles)
+                list.Add(new SelectListItem() { Value = role.Name, Text = role.Name });
+            ViewBag.Roles = list;
+
+            return View();
+        }
+
+        //
+        // POST: /Account/RegisterDoctor
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> RegisterDoctor(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    FullName = model.FullName,
+                    PhoneNumber = model.PhoneNumber,
+                    Gender = model.Gender,
+                    BirthDate = model.BirthDate/*,
+                    RoleName = "Doctor Clinic"*/
+                };
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    //Start
+                    //Arafa
+                    //Asign group to developers accounts
+
+                    //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    //var roleManger = new RoleManager<IdentityRole>(roleStore);
+                    //await roleManger.CreateAsync(new IdentityRole(RoleName.DevGroup));
+                    //await UserManager.AddToRoleAsync(user.Id, RoleName.DevGroup);
+
+                    //End
+                    //if (model.RoleName != null)
+                    result = await UserManager.AddToRolesAsync(user.Id, model.RoleName);
+
+                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false); by Arafa
+
+                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    //Arafa start
+                    var resendConformation = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account");
+
+
+                    ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
+                         + "before you can log in.";
+
+                    return View("Info");
+                    //return RedirectToAction("Index", "Home");//Arafa
+                }
+                AddErrors(result);
+            }
+
+            List<SelectListItem> list = new List<SelectListItem>();
+            foreach (var role in RoleManager.Roles)
+                list.Add(new SelectListItem() { Value = role.Name, Text = role.Name });
+            ViewBag.Roles = list;
 
             // If we got this far, something failed, redisplay form
             return View(model);
@@ -223,10 +360,10 @@ namespace MediRec.Controllers
 
                 // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
             // If we got this far, something failed, redisplay form
@@ -327,6 +464,18 @@ namespace MediRec.Controllers
                 return View("Error");
             }
             return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
+        }
+
+        //Arafa start
+        private async Task<string> SendEmailConfirmationTokenAsync(string userID, string subject)
+        {
+            string code = await UserManager.GenerateEmailConfirmationTokenAsync(userID);
+            var callbackUrl = Url.Action("ConfirmEmail", "Account",
+               new { userId = userID, code = code }, protocol: Request.Url.Scheme);
+            await UserManager.SendEmailAsync(userID, subject,
+               "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+            return callbackUrl;
         }
 
         //

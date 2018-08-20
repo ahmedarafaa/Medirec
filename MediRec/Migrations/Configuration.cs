@@ -10,7 +10,6 @@ namespace MediRec.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "MediRec.Models.ApplicationDbContext";
         }
 
         protected override void Seed(MediRec.Models.ApplicationDbContext context)
@@ -19,7 +18,6 @@ namespace MediRec.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
-            
         }
     }
 }

@@ -19,5 +19,7 @@ namespace MediRec.Models
         {
             return new ApplicationDbContext();
         }
+
+        //public System.Data.Entity.DbSet<MediRec.ViewModel.RoleViewModel> RoleViewModels { get; set; }
     }
 }

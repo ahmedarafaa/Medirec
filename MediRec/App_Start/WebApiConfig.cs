@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -11,6 +13,9 @@ namespace MediRec
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            var setting = config.Formatters.JsonFormatter.SerializerSettings;
+            setting.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            setting.Formatting = Formatting.Indented;
 
             config.AddODataQueryFilter();
 

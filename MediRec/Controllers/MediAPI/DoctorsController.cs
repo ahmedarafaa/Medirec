@@ -1,4 +1,6 @@
-﻿using MediRec.Models;
+﻿using AutoMapper;
+using MediRec.Dtos;
+using MediRec.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +17,9 @@ namespace MediRec.Controllers.MediAPI
 
         // GET: api/Doctors
         [EnableQuery]
-        [Authorize(Roles = RoleName.DevGroup)]
-        public IQueryable<Doctors> GetDoctors()
+        public IEnumerable<DoctorsDto> GetDoctors()
         {
-            return _context.Doctors;
+            return _context.Doctors.ToList().Select(Mapper.Map<Doctors,DoctorsDto>);
         }
 
         protected override void Dispose(bool disposing)

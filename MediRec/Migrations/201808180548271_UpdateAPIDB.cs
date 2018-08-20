@@ -3,7 +3,7 @@ namespace MediRec.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialModel : DbMigration
+    public partial class UpdateAPIDB : DbMigration
     {
         public override void Up()
         {
@@ -49,6 +49,9 @@ namespace MediRec.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        BirthDate = c.DateTime(nullable: false),
+                        FullName = c.String(nullable: false, maxLength: 50),
+                        Gender = c.String(maxLength: 1),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
