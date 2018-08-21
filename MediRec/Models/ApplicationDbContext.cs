@@ -9,6 +9,10 @@ namespace MediRec.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Doctors> Doctors { get; set; }
+        public DbSet<Countries> Countries { get; set; }
+        public DbSet<Cities> Cities { get; set; }
+        public DbSet<Areas> Areas { get; set; }
+        public DbSet<Specialties> Specialties { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

@@ -7,13 +7,13 @@ namespace MediRec.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class UpdateAPIDB : IMigrationMetadata
+    public sealed partial class AddSpecialtiesTable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdateAPIDB));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddSpecialtiesTable));
         
         string IMigrationMetadata.Id
         {
-            get { return "201808180548271_UpdateAPIDB"; }
+            get { return "201808211135125_AddSpecialtiesTable"; }
         }
         
         string IMigrationMetadata.Source

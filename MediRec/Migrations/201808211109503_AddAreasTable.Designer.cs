@@ -7,13 +7,13 @@ namespace MediRec.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddNewFieldsToDoctor : IMigrationMetadata
+    public sealed partial class AddAreasTable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddNewFieldsToDoctor));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddAreasTable));
         
         string IMigrationMetadata.Id
         {
-            get { return "201808202230351_AddNewFieldsToDoctor"; }
+            get { return "201808211109503_AddAreasTable"; }
         }
         
         string IMigrationMetadata.Source

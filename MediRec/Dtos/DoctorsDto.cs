@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediRec.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -23,20 +24,15 @@ namespace MediRec.Dtos
         [StringLength(100)]
         public string NameEn { get; set; }
 
-        [Required]
-        public byte Specialty { get; set; }
 
         [Required]
         public byte SpecialtyId { get; set; }
 
         [Required]
-        public byte CountryId { get; set; }
+        public int CityId { get; set; }
 
         [Required]
-        public byte CityId { get; set; }
-
-        [Required]
-        public byte AreaId { get; set; }
+        public int AreaId { get; set; }
 
         [Required]
         [StringLength(1)]
@@ -45,30 +41,16 @@ namespace MediRec.Dtos
         [Required]
         public double TickerPrice { get; set; }
 
+        [StringLength(100)]
+        public string AboutDoctorShortDescription { get; set; }
+
+        [StringLength(1000)]
+        public string AboutDoctorLongDescription { get; set; }
+
         [Display(Name = "Birth Date")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime BirthDate { get; set; }
 
-        [Display(Name = "Register Date")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTime RegisterDate { get; set; }
-
-        [Required]
-        [StringLength(225)]
-        public string SearchName { get; set; }
-
-        [StringLength(225)]
-        public string CreatedBy { get; set; }
-
-        [DataType(DataType.Date)]
-        public DateTime CreadtedDateTime { get; set; }
-
-        [StringLength(225)]
-        public string ModifiedBy { get; set; }
-
-        [DataType(DataType.Date)]
-        public DateTime ModifiedDateTime { get; set; }
     }
 }

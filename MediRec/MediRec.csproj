@@ -228,46 +228,58 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808180548271_UpdateAPIDB.cs" />
-    <Compile Include="Migrations\201808180548271_UpdateAPIDB.Designer.cs">
-      <DependentUpon>201808180548271_UpdateAPIDB.cs</DependentUpon>
+    <Compile Include="Migrations\201808211054585_InitialModel.cs" />
+    <Compile Include="Migrations\201808211054585_InitialModel.Designer.cs">
+      <DependentUpon>201808211054585_InitialModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808191728029_Role.cs" />
-    <Compile Include="Migrations\201808191728029_Role.Designer.cs">
-      <DependentUpon>201808191728029_Role.cs</DependentUpon>
+    <Compile Include="Migrations\201808211107277_AddCitiesTable.cs" />
+    <Compile Include="Migrations\201808211107277_AddCitiesTable.Designer.cs">
+      <DependentUpon>201808211107277_AddCitiesTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808191757140_Role1.cs" />
-    <Compile Include="Migrations\201808191757140_Role1.Designer.cs">
-      <DependentUpon>201808191757140_Role1.cs</DependentUpon>
+    <Compile Include="Migrations\201808211109503_AddAreasTable.cs" />
+    <Compile Include="Migrations\201808211109503_AddAreasTable.Designer.cs">
+      <DependentUpon>201808211109503_AddAreasTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808191944340_Role2.cs" />
-    <Compile Include="Migrations\201808191944340_Role2.Designer.cs">
-      <DependentUpon>201808191944340_Role2.cs</DependentUpon>
+    <Compile Include="Migrations\201808211112333_AddRelationBetweenDoctorAndCity.cs" />
+    <Compile Include="Migrations\201808211112333_AddRelationBetweenDoctorAndCity.Designer.cs">
+      <DependentUpon>201808211112333_AddRelationBetweenDoctorAndCity.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808192233254_tt.cs" />
-    <Compile Include="Migrations\201808192233254_tt.Designer.cs">
-      <DependentUpon>201808192233254_tt.cs</DependentUpon>
+    <Compile Include="Migrations\201808211116102_AddRelationBetweenDoctorAndAreas.cs" />
+    <Compile Include="Migrations\201808211116102_AddRelationBetweenDoctorAndAreas.Designer.cs">
+      <DependentUpon>201808211116102_AddRelationBetweenDoctorAndAreas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808192241019_DropRoleViewModels.cs" />
-    <Compile Include="Migrations\201808192241019_DropRoleViewModels.Designer.cs">
-      <DependentUpon>201808192241019_DropRoleViewModels.cs</DependentUpon>
+    <Compile Include="Migrations\201808211118145_AddRelationBetweenCountriesAndCities.cs" />
+    <Compile Include="Migrations\201808211118145_AddRelationBetweenCountriesAndCities.Designer.cs">
+      <DependentUpon>201808211118145_AddRelationBetweenCountriesAndCities.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808202155186_AddNewDataNotationtoDoctorTable.cs" />
-    <Compile Include="Migrations\201808202155186_AddNewDataNotationtoDoctorTable.Designer.cs">
-      <DependentUpon>201808202155186_AddNewDataNotationtoDoctorTable.cs</DependentUpon>
+    <Compile Include="Migrations\201808211120586_AddRelationBetweenCitiesAndAreas.cs" />
+    <Compile Include="Migrations\201808211120586_AddRelationBetweenCitiesAndAreas.Designer.cs">
+      <DependentUpon>201808211120586_AddRelationBetweenCitiesAndAreas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808202230351_AddNewFieldsToDoctor.cs" />
-    <Compile Include="Migrations\201808202230351_AddNewFieldsToDoctor.Designer.cs">
-      <DependentUpon>201808202230351_AddNewFieldsToDoctor.cs</DependentUpon>
+    <Compile Include="Migrations\201808211124454_dropSpecialtyFromDoctors.cs" />
+    <Compile Include="Migrations\201808211124454_dropSpecialtyFromDoctors.Designer.cs">
+      <DependentUpon>201808211124454_dropSpecialtyFromDoctors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808211135125_AddSpecialtiesTable.cs" />
+    <Compile Include="Migrations\201808211135125_AddSpecialtiesTable.Designer.cs">
+      <DependentUpon>201808211135125_AddSpecialtiesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808211136273_AddRelationBetweenDoctorAndSpeciality.cs" />
+    <Compile Include="Migrations\201808211136273_AddRelationBetweenDoctorAndSpeciality.Designer.cs">
+      <DependentUpon>201808211136273_AddRelationBetweenDoctorAndSpeciality.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationRole.cs" />
+    <Compile Include="Models\Areas.cs" />
+    <Compile Include="Models\Cities.cs" />
+    <Compile Include="Models\Countries.cs" />
     <Compile Include="Models\Doctors.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RoleName.cs" />
+    <Compile Include="Models\Specialties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\AddPhoneNumberViewModel.cs" />
@@ -377,29 +389,35 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808180548271_UpdateAPIDB.resx">
-      <DependentUpon>201808180548271_UpdateAPIDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808211054585_InitialModel.resx">
+      <DependentUpon>201808211054585_InitialModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808191728029_Role.resx">
-      <DependentUpon>201808191728029_Role.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808211107277_AddCitiesTable.resx">
+      <DependentUpon>201808211107277_AddCitiesTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808191757140_Role1.resx">
-      <DependentUpon>201808191757140_Role1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808211109503_AddAreasTable.resx">
+      <DependentUpon>201808211109503_AddAreasTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808191944340_Role2.resx">
-      <DependentUpon>201808191944340_Role2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808211112333_AddRelationBetweenDoctorAndCity.resx">
+      <DependentUpon>201808211112333_AddRelationBetweenDoctorAndCity.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808192233254_tt.resx">
-      <DependentUpon>201808192233254_tt.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808211116102_AddRelationBetweenDoctorAndAreas.resx">
+      <DependentUpon>201808211116102_AddRelationBetweenDoctorAndAreas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808192241019_DropRoleViewModels.resx">
-      <DependentUpon>201808192241019_DropRoleViewModels.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808211118145_AddRelationBetweenCountriesAndCities.resx">
+      <DependentUpon>201808211118145_AddRelationBetweenCountriesAndCities.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808202155186_AddNewDataNotationtoDoctorTable.resx">
-      <DependentUpon>201808202155186_AddNewDataNotationtoDoctorTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808211120586_AddRelationBetweenCitiesAndAreas.resx">
+      <DependentUpon>201808211120586_AddRelationBetweenCitiesAndAreas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808202230351_AddNewFieldsToDoctor.resx">
-      <DependentUpon>201808202230351_AddNewFieldsToDoctor.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808211124454_dropSpecialtyFromDoctors.resx">
+      <DependentUpon>201808211124454_dropSpecialtyFromDoctors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808211135125_AddSpecialtiesTable.resx">
+      <DependentUpon>201808211135125_AddSpecialtiesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808211136273_AddRelationBetweenDoctorAndSpeciality.resx">
+      <DependentUpon>201808211136273_AddRelationBetweenDoctorAndSpeciality.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

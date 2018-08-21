@@ -23,20 +23,22 @@ namespace MediRec.Models
         [StringLength(100)]
         public string NameEn { get; set; }
 
-        [Required]
-        public byte Specialty { get; set; }
 
         [Required]
         public byte SpecialtyId { get; set; }
+        public Specialties Specialties { get; set; }
 
         [Required]
-        public byte CountryId { get; set; }
+        public int CountryId { get; set; }
+        public Countries Countries { get; set; }
 
         [Required]
-        public byte CityId { get; set; }
+        public int CityId { get; set; }
+        public Cities Cities { get; set; }
 
         [Required]
-        public byte AreaId { get; set; }
+        public int AreaId { get; set; }
+        public Areas Areas { get; set; }
 
         [Required]
         [StringLength(1)]
@@ -44,6 +46,12 @@ namespace MediRec.Models
 
         [Required]
         public double TickerPrice { get; set; }
+
+        [StringLength(100)]
+        public string AboutDoctorShortDescription { get; set; }
+
+        [StringLength(1000)]
+        public string AboutDoctorLongDescription { get; set; }
 
         [Display(Name = "Birth Date")]
         [DataType(DataType.Date)]

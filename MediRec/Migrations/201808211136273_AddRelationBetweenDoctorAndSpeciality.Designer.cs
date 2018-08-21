@@ -7,13 +7,13 @@ namespace MediRec.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Role : IMigrationMetadata
+    public sealed partial class AddRelationBetweenDoctorAndSpeciality : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Role));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddRelationBetweenDoctorAndSpeciality));
         
         string IMigrationMetadata.Id
         {
-            get { return "201808191728029_Role"; }
+            get { return "201808211136273_AddRelationBetweenDoctorAndSpeciality"; }
         }
         
         string IMigrationMetadata.Source

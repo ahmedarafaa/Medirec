@@ -3,16 +3,16 @@ namespace MediRec.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Role2 : DbMigration
+    public partial class dropSpecialtyFromDoctors : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.AspNetUsers", "RoleName", c => c.String(nullable: false, maxLength: 10));
+            DropColumn("dbo.Doctors", "Specialty");
         }
         
         public override void Down()
         {
-            DropColumn("dbo.AspNetUsers", "RoleName");
+            AddColumn("dbo.Doctors", "Specialty", c => c.Byte(nullable: false));
         }
     }
 }

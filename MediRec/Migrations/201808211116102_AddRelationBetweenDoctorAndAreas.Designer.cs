@@ -7,13 +7,13 @@ namespace MediRec.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class DropRoleViewModels : IMigrationMetadata
+    public sealed partial class AddRelationBetweenDoctorAndAreas : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DropRoleViewModels));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddRelationBetweenDoctorAndAreas));
         
         string IMigrationMetadata.Id
         {
-            get { return "201808192241019_DropRoleViewModels"; }
+            get { return "201808211116102_AddRelationBetweenDoctorAndAreas"; }
         }
         
         string IMigrationMetadata.Source
