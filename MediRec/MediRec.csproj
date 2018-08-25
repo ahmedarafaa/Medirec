@@ -57,6 +57,9 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Spatial, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Spatial.5.6.0\lib\net40\System.Spatial.dll</HintPath>
     </Reference>
@@ -66,8 +69,14 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.6\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Http.OData, Version=5.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.OData.5.7.0\lib\net45\System.Web.Http.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.6\lib\net45\System.Web.Http.Owin.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
@@ -128,12 +137,6 @@
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.Formatting">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.4\lib\net45\System.Net.Http.Formatting.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.4\lib\net45\System.Web.Http.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http.WebHost">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.4\lib\net45\System.Web.Http.WebHost.dll</HintPath>
@@ -220,14 +223,18 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EntitiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MediAPI\DoctorRegisterController.cs" />
     <Compile Include="Controllers\MediAPI\DoctorsController.cs" />
+    <Compile Include="Controllers\MediAPI\EntitiesController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Dtos\DoctorsDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="MessageHandler\APIKeyMessageHandler.cs" />
     <Compile Include="Migrations\201808211054585_InitialModel.cs" />
     <Compile Include="Migrations\201808211054585_InitialModel.Designer.cs">
       <DependentUpon>201808211054585_InitialModel.cs</DependentUpon>
@@ -268,14 +275,49 @@
     <Compile Include="Migrations\201808211136273_AddRelationBetweenDoctorAndSpeciality.Designer.cs">
       <DependentUpon>201808211136273_AddRelationBetweenDoctorAndSpeciality.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808211924264_UploadtoGodaddy.cs" />
+    <Compile Include="Migrations\201808211924264_UploadtoGodaddy.Designer.cs">
+      <DependentUpon>201808211924264_UploadtoGodaddy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808232102571_AddNewFieldInDoctors.cs" />
+    <Compile Include="Migrations\201808232102571_AddNewFieldInDoctors.Designer.cs">
+      <DependentUpon>201808232102571_AddNewFieldInDoctors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808232104049_AddNewTableBookingType.cs" />
+    <Compile Include="Migrations\201808232104049_AddNewTableBookingType.Designer.cs">
+      <DependentUpon>201808232104049_AddNewTableBookingType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808232110390_DropRelationBetweenDoctorsAndSpeciality.cs" />
+    <Compile Include="Migrations\201808232110390_DropRelationBetweenDoctorsAndSpeciality.Designer.cs">
+      <DependentUpon>201808232110390_DropRelationBetweenDoctorsAndSpeciality.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808232117017_AddMantToMantRelationBetweenDoctorsAndSpeciality.cs" />
+    <Compile Include="Migrations\201808232117017_AddMantToMantRelationBetweenDoctorsAndSpeciality.Designer.cs">
+      <DependentUpon>201808232117017_AddMantToMantRelationBetweenDoctorsAndSpeciality.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808232222428_AddNewTableEntities.cs" />
+    <Compile Include="Migrations\201808232222428_AddNewTableEntities.Designer.cs">
+      <DependentUpon>201808232222428_AddNewTableEntities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808232254153_AddNewTableEntitiesDoctors.cs" />
+    <Compile Include="Migrations\201808232254153_AddNewTableEntitiesDoctors.Designer.cs">
+      <DependentUpon>201808232254153_AddNewTableEntitiesDoctors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808232258077_AddNewFieldsToEntities.cs" />
+    <Compile Include="Migrations\201808232258077_AddNewFieldsToEntities.Designer.cs">
+      <DependentUpon>201808232258077_AddNewFieldsToEntities.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationRole.cs" />
     <Compile Include="Models\Areas.cs" />
+    <Compile Include="Models\BookingType.cs" />
     <Compile Include="Models\Cities.cs" />
     <Compile Include="Models\Countries.cs" />
     <Compile Include="Models\Doctors.cs" />
+    <Compile Include="Models\Entities.cs" />
+    <Compile Include="Models\EntitiesDoctors.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RoleName.cs" />
@@ -288,17 +330,21 @@
     <Compile Include="ViewModel\DoctorsViewModel.cs" />
     <Compile Include="ViewModel\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="ViewModel\ExternalLoginListViewModel.cs" />
+    <Compile Include="ViewModel\ExternalLoginViewModel.cs" />
     <Compile Include="ViewModel\FactorViewModel.cs" />
     <Compile Include="ViewModel\ForgotPasswordViewModel.cs" />
     <Compile Include="ViewModel\ForgotViewModel.cs" />
     <Compile Include="ViewModel\IndexViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\ManageInfoViewModel.cs" />
     <Compile Include="ViewModel\ManageLoginsViewModel.cs" />
     <Compile Include="ViewModel\RegisterViewModel.cs" />
     <Compile Include="ViewModel\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModel\RoleViewModel.cs" />
     <Compile Include="ViewModel\SendCodeViewModel.cs" />
     <Compile Include="ViewModel\SetPasswordViewModel.cs" />
+    <Compile Include="ViewModel\UserInfoViewModel.cs" />
+    <Compile Include="ViewModel\UserLoginInfoViewModel.cs" />
     <Compile Include="ViewModel\VerifyCodeViewModel.cs" />
     <Compile Include="ViewModel\VerifyPhoneNumberViewModel.cs" />
   </ItemGroup>
@@ -371,9 +417,15 @@
     <Content Include="Views\Role\Details.cshtml" />
     <Content Include="Views\Role\Delete.cshtml" />
     <Content Include="Views\Account\RegisterDoctor.cshtml" />
+    <Content Include="Views\Entities\Create.cshtml" />
+    <Content Include="Views\Entities\Delete.cshtml" />
+    <Content Include="Views\Entities\Details.cshtml" />
+    <Content Include="Views\Entities\Edit.cshtml" />
+    <Content Include="Views\Entities\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\DoctorRegister\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -418,6 +470,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808211136273_AddRelationBetweenDoctorAndSpeciality.resx">
       <DependentUpon>201808211136273_AddRelationBetweenDoctorAndSpeciality.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808211924264_UploadtoGodaddy.resx">
+      <DependentUpon>201808211924264_UploadtoGodaddy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808232102571_AddNewFieldInDoctors.resx">
+      <DependentUpon>201808232102571_AddNewFieldInDoctors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808232104049_AddNewTableBookingType.resx">
+      <DependentUpon>201808232104049_AddNewTableBookingType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808232110390_DropRelationBetweenDoctorsAndSpeciality.resx">
+      <DependentUpon>201808232110390_DropRelationBetweenDoctorsAndSpeciality.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808232117017_AddMantToMantRelationBetweenDoctorsAndSpeciality.resx">
+      <DependentUpon>201808232117017_AddMantToMantRelationBetweenDoctorsAndSpeciality.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808232222428_AddNewTableEntities.resx">
+      <DependentUpon>201808232222428_AddNewTableEntities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808232254153_AddNewTableEntitiesDoctors.resx">
+      <DependentUpon>201808232254153_AddNewTableEntitiesDoctors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808232258077_AddNewFieldsToEntities.resx">
+      <DependentUpon>201808232258077_AddNewFieldsToEntities.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

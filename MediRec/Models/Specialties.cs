@@ -8,6 +8,11 @@ namespace MediRec.Models
 {
     public class Specialties
     {
+        public Specialties()
+        {
+            this.Doctors = new HashSet<Doctors>();
+        }
+
         [Key]
         public int SpecialtyId { get; set; }
 
@@ -24,6 +29,8 @@ namespace MediRec.Models
         [Display(Name = "English Name")]
         public string NameEn { get; set; }
 
+        public virtual ICollection<Doctors> Doctors { get; set; }
+
         [StringLength(225)]
         public string CreatedBy { get; set; }
 
@@ -35,5 +42,10 @@ namespace MediRec.Models
 
         [DataType(DataType.Date)]
         public DateTime? ModifiedDateTime { get; set; }
+
+        public static implicit operator Specialties(HashSet<Specialties> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

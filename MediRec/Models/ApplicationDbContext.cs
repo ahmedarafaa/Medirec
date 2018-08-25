@@ -13,6 +13,9 @@ namespace MediRec.Models
         public DbSet<Cities> Cities { get; set; }
         public DbSet<Areas> Areas { get; set; }
         public DbSet<Specialties> Specialties { get; set; }
+        public DbSet<BookingType> BookingType { get; set; }
+        public DbSet<Entities> Entities { get; set; }
+        public DbSet<EntitiesDoctors> EntitiesDoctors { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

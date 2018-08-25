@@ -194,8 +194,7 @@ namespace MediRec.Controllers
                     FullName = model.FullName,
                     PhoneNumber = model.PhoneNumber,
                     Gender = model.Gender,
-                    BirthDate = model.BirthDate/*,
-                    RoleName = "Doctor Clinic"*/
+                    BirthDate = model.BirthDate
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

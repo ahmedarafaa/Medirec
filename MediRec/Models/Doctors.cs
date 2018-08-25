@@ -8,6 +8,11 @@ namespace MediRec.Models
 {
     public class Doctors
     {
+        public Doctors()
+        {
+            this.Specialties = new HashSet<Specialties>();
+        }
+
         [Key]
         public int DoctorId { get; set; }
 
@@ -26,7 +31,7 @@ namespace MediRec.Models
 
         [Required]
         public byte SpecialtyId { get; set; }
-        public Specialties Specialties { get; set; }
+        public virtual ICollection<Specialties> Specialties { get; set; }
 
         [Required]
         public int CountryId { get; set; }
@@ -64,6 +69,17 @@ namespace MediRec.Models
         public DateTime RegisterDate { get; set; }
 
         [Required]
+        [StringLength(100)]
+        public string Address { get; set; }
+
+        [Required]
+        public int WaitingTime { get; set; }
+
+        //[Required]
+        //public int BookingTypeId { get; set; }
+        //public BookingType BookingType { get; set; }
+
+        [Required]
         [StringLength(225)]
         public string SearchName { get; set; }
 
@@ -75,9 +91,6 @@ namespace MediRec.Models
 
         [StringLength(225)]
         public string ModifiedBy { get; set; }
-
-        [DataType(DataType.Date)]
-        public DateTime ModifiedDateTime { get; set; }
 
     }
 }

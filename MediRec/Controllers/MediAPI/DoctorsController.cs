@@ -16,7 +16,7 @@ namespace MediRec.Controllers.MediAPI
         private ApplicationDbContext _context = new ApplicationDbContext();
 
         // GET: api/Doctors
-        [EnableQuery]
+        [EnableQuery(PageSize = 10)]
         public IEnumerable<DoctorsDto> GetDoctors()
         {
             return _context.Doctors.ToList().Select(Mapper.Map<Doctors,DoctorsDto>);

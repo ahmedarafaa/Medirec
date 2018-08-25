@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediRec.App_Start;
+using MediRec.MessageHandler;
 using MediRec.Models;
 using System;
 using System.Collections.Generic;
@@ -17,15 +18,20 @@ namespace MediRec
     {
         protected void Application_Start()
         {
-
+            //Api
+            GlobalConfiguration.Configuration.MessageHandlers.Add(new APIKeyMessageHandler());
+            
+            //Auto Mapper
             Mapper.Initialize(c => c.AddProfile<MappingProfile>());
+
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
+            //Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
+
             GlobalConfiguration.Configuration
                 .Formatters.JsonFormatter.SerializerSettings
                 .ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;

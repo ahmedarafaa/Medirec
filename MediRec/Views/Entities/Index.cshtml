@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MediRec.Models.Entities>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EntityCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NameAr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NameEn)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EntityCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameAr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameEn)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.EntityId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.EntityId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.EntityId })
+        </td>
+    </tr>
+}
+
+</table>
