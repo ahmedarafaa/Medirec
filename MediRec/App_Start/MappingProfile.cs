@@ -21,6 +21,7 @@ namespace MediRec.App_Start
             Mapper.CreateMap<Condations, CondationsDto>();
             Mapper.CreateMap<HumanBody, HumanBodyDto>();
             Mapper.CreateMap<BloodPressure, BloodPressureDto>();
+            Mapper.CreateMap<Medications, MedicationsDto>();
 
             //Dto to Domain 
 
@@ -30,6 +31,7 @@ namespace MediRec.App_Start
             Mapper.CreateMap<CondationsDto, Condations>();
             Mapper.CreateMap<HumanBodyDto, HumanBody>();
             Mapper.CreateMap<BloodPressureDto, BloodPressure>();
+            Mapper.CreateMap<MedicationsDto, Medications>();
 
         }
     }

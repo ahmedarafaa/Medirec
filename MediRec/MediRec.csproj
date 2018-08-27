@@ -234,6 +234,7 @@
     <Compile Include="Controllers\MediAPI\DoctorsController.cs" />
     <Compile Include="Controllers\MediAPI\EntitiesController.cs" />
     <Compile Include="Controllers\MediAPI\HumanBodiesController.cs" />
+    <Compile Include="Controllers\MediAPI\MedicationsController.cs" />
     <Compile Include="Controllers\MediAPI\PatientsController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Dtos\AllergiesDto.cs" />
@@ -241,6 +242,7 @@
     <Compile Include="Dtos\CondationsDto.cs" />
     <Compile Include="Dtos\DoctorsDto.cs" />
     <Compile Include="Dtos\HumanBodyDto.cs" />
+    <Compile Include="Dtos\MedicationsDto.cs" />
     <Compile Include="Dtos\PatientsDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -350,6 +352,10 @@
     <Compile Include="Migrations\201808261216396_AddNewTableBloodPressure.Designer.cs">
       <DependentUpon>201808261216396_AddNewTableBloodPressure.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808270657034_AddNewtableMecications.cs" />
+    <Compile Include="Migrations\201808270657034_AddNewtableMecications.Designer.cs">
+      <DependentUpon>201808270657034_AddNewtableMecications.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Allergies.cs" />
@@ -367,6 +373,7 @@
     <Compile Include="Models\HumanBody.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Medications.cs" />
     <Compile Include="Models\Patients.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="Models\Specialties.cs" />
@@ -568,6 +575,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808261216396_AddNewTableBloodPressure.resx">
       <DependentUpon>201808261216396_AddNewTableBloodPressure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808270657034_AddNewtableMecications.resx">
+      <DependentUpon>201808270657034_AddNewtableMecications.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

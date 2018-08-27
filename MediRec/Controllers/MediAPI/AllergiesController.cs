@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.Http.OData;
 using AutoMapper;
 using MediRec.Dtos;
 using MediRec.Models;
@@ -25,6 +26,7 @@ namespace MediRec.Controllers.MediAPI
         }
 
         // GET: api/Allergies/5
+        [EnableQuery(PageSize = 4)]
         [ResponseType(typeof(Allergies))]
         public IHttpActionResult GetAllergies(int id)
         {

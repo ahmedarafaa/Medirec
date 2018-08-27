@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.Http.OData;
 using AutoMapper;
 using MediRec.Dtos;
 using MediRec.Models;
@@ -26,6 +27,7 @@ namespace MediRec.Controllers.MediAPI
 
         // GET: api/Condations/5
         [ResponseType(typeof(Condations))]
+        [EnableQuery(PageSize = 4)]
         public IHttpActionResult GetCondations(int id)
         {
             var condations = _context.Condations.Where(c => c.UserId == id);
