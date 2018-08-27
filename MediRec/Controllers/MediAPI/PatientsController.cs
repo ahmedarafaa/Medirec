@@ -124,6 +124,13 @@ namespace MediRec.Controllers.MediAPI
             return Ok("Photo could not be uploaded..");
         }
 
+        // GET: api/Patients
+        [Route("api/UploadPatientPhoto/{userId}")]
+        public IQueryable<Patients> GetImage(int userId)
+        {
+            return _context.Patients;
+        }
+
         // DELETE: api/Patients/5
         [ResponseType(typeof(Patients))]
         public IHttpActionResult DeletePatients(int id)

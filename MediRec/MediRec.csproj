@@ -228,8 +228,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MediAPI\AllergiesController.cs" />
+    <Compile Include="Controllers\MediAPI\AreasController.cs" />
     <Compile Include="Controllers\MediAPI\BloodPressureController.cs" />
+    <Compile Include="Controllers\MediAPI\CitiesController.cs" />
     <Compile Include="Controllers\MediAPI\CondationsController.cs" />
+    <Compile Include="Controllers\MediAPI\CountriesController.cs" />
     <Compile Include="Controllers\MediAPI\DoctorRegisterController.cs" />
     <Compile Include="Controllers\MediAPI\DoctorsController.cs" />
     <Compile Include="Controllers\MediAPI\EntitiesController.cs" />
