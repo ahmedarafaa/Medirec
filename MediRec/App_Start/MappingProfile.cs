@@ -16,11 +16,21 @@ namespace MediRec.App_Start
         {
             //Domain to Dto
             Mapper.CreateMap<Doctors, DoctorsDto>();
-
+            Mapper.CreateMap<Patients, PatientsDto>();
+            Mapper.CreateMap<Allergies, AllergiesDto>();
+            Mapper.CreateMap<Condations, CondationsDto>();
+            Mapper.CreateMap<HumanBody, HumanBodyDto>();
+            Mapper.CreateMap<BloodPressure, BloodPressureDto>();
 
             //Dto to Domain 
 
             Mapper.CreateMap<DoctorsDto, Doctors>();
+            Mapper.CreateMap<PatientsDto, Patients>();
+            Mapper.CreateMap<AllergiesDto, Allergies>();
+            Mapper.CreateMap<CondationsDto, Condations>();
+            Mapper.CreateMap<HumanBodyDto, HumanBody>();
+            Mapper.CreateMap<BloodPressureDto, BloodPressure>();
+
         }
     }
 }

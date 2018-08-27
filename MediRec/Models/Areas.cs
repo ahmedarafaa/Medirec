@@ -14,7 +14,7 @@ namespace MediRec.Models
         //[Required]
         [StringLength(4)]
         [Display(Name = "Area Code")]
-        public string CountryCode { get; set; }
+        public string AreaCode { get; set; }
 
         [Required]
         [StringLength(50)]

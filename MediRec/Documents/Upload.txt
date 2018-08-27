@@ -1,0 +1,6 @@
+UploadPatientPhoto
+
+36765264api.medirec.me
+
+
+G:\\PleskVhosts\\medirec.me\\36765264api.medirec.me\\

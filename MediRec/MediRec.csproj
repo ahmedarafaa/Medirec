@@ -224,13 +224,24 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EntitiesController.cs" />
+    <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MediAPI\AllergiesController.cs" />
+    <Compile Include="Controllers\MediAPI\BloodPressureController.cs" />
+    <Compile Include="Controllers\MediAPI\CondationsController.cs" />
     <Compile Include="Controllers\MediAPI\DoctorRegisterController.cs" />
     <Compile Include="Controllers\MediAPI\DoctorsController.cs" />
     <Compile Include="Controllers\MediAPI\EntitiesController.cs" />
+    <Compile Include="Controllers\MediAPI\HumanBodiesController.cs" />
+    <Compile Include="Controllers\MediAPI\PatientsController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Dtos\AllergiesDto.cs" />
+    <Compile Include="Dtos\BloodPressureDto.cs" />
+    <Compile Include="Dtos\CondationsDto.cs" />
     <Compile Include="Dtos\DoctorsDto.cs" />
+    <Compile Include="Dtos\HumanBodyDto.cs" />
+    <Compile Include="Dtos\PatientsDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -307,19 +318,56 @@
     <Compile Include="Migrations\201808232258077_AddNewFieldsToEntities.Designer.cs">
       <DependentUpon>201808232258077_AddNewFieldsToEntities.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808251745013_AddNewTablePatients.cs" />
+    <Compile Include="Migrations\201808251745013_AddNewTablePatients.Designer.cs">
+      <DependentUpon>201808251745013_AddNewTablePatients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808251844470_AddNewTablePatients1.cs" />
+    <Compile Include="Migrations\201808251844470_AddNewTablePatients1.Designer.cs">
+      <DependentUpon>201808251844470_AddNewTablePatients1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808251924308_AddNewTablePatients2.cs" />
+    <Compile Include="Migrations\201808251924308_AddNewTablePatients2.Designer.cs">
+      <DependentUpon>201808251924308_AddNewTablePatients2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808251939291_AddUserIdToIdentity.cs" />
+    <Compile Include="Migrations\201808251939291_AddUserIdToIdentity.Designer.cs">
+      <DependentUpon>201808251939291_AddUserIdToIdentity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808252210023_AddNewTableAllergies.cs" />
+    <Compile Include="Migrations\201808252210023_AddNewTableAllergies.Designer.cs">
+      <DependentUpon>201808252210023_AddNewTableAllergies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808252300529_AddNewTableCondations.cs" />
+    <Compile Include="Migrations\201808252300529_AddNewTableCondations.Designer.cs">
+      <DependentUpon>201808252300529_AddNewTableCondations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808260614575_AddNewTableHumanBody.cs" />
+    <Compile Include="Migrations\201808260614575_AddNewTableHumanBody.Designer.cs">
+      <DependentUpon>201808260614575_AddNewTableHumanBody.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808261216396_AddNewTableBloodPressure.cs" />
+    <Compile Include="Migrations\201808261216396_AddNewTableBloodPressure.Designer.cs">
+      <DependentUpon>201808261216396_AddNewTableBloodPressure.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Allergies.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationRole.cs" />
     <Compile Include="Models\Areas.cs" />
+    <Compile Include="Models\BloodPressure.cs" />
     <Compile Include="Models\BookingType.cs" />
     <Compile Include="Models\Cities.cs" />
+    <Compile Include="Models\Condations.cs" />
     <Compile Include="Models\Countries.cs" />
     <Compile Include="Models\Doctors.cs" />
     <Compile Include="Models\Entities.cs" />
     <Compile Include="Models\EntitiesDoctors.cs" />
+    <Compile Include="Models\HumanBody.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Patients.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="Models\Specialties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -362,6 +410,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Documents\ViewPage1.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -422,6 +471,7 @@
     <Content Include="Views\Entities\Details.cshtml" />
     <Content Include="Views\Entities\Edit.cshtml" />
     <Content Include="Views\Entities\Index.cshtml" />
+    <Content Include="Views\FileUpload\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -494,6 +544,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808232258077_AddNewFieldsToEntities.resx">
       <DependentUpon>201808232258077_AddNewFieldsToEntities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808251745013_AddNewTablePatients.resx">
+      <DependentUpon>201808251745013_AddNewTablePatients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808251844470_AddNewTablePatients1.resx">
+      <DependentUpon>201808251844470_AddNewTablePatients1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808251924308_AddNewTablePatients2.resx">
+      <DependentUpon>201808251924308_AddNewTablePatients2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808251939291_AddUserIdToIdentity.resx">
+      <DependentUpon>201808251939291_AddUserIdToIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808252210023_AddNewTableAllergies.resx">
+      <DependentUpon>201808252210023_AddNewTableAllergies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808252300529_AddNewTableCondations.resx">
+      <DependentUpon>201808252300529_AddNewTableCondations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808260614575_AddNewTableHumanBody.resx">
+      <DependentUpon>201808260614575_AddNewTableHumanBody.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808261216396_AddNewTableBloodPressure.resx">
+      <DependentUpon>201808261216396_AddNewTableBloodPressure.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

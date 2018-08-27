@@ -60,7 +60,7 @@ namespace MediRec.Models
 
         [Display(Name = "Birth Date")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime BirthDate { get; set; }
 
         [Display(Name = "Register Date")]
@@ -87,10 +87,13 @@ namespace MediRec.Models
         public string CreatedBy { get; set; }
 
         [DataType(DataType.Date)]
-        public DateTime CreadtedDateTime { get; set; }
+        public DateTime? CreadtedDateTime { get; set; }
 
         [StringLength(225)]
         public string ModifiedBy { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime? ModifiedDateTime { get; set; }
 
     }
 }

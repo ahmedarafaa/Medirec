@@ -32,6 +32,9 @@ namespace MediRec.Models
         [Display(Name = "Type")]
         public string RoleName { get; set; } = "User";
 
+        public int UserId { get; set; }
+
+
         //End
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)

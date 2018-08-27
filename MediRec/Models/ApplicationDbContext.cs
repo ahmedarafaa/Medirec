@@ -16,6 +16,11 @@ namespace MediRec.Models
         public DbSet<BookingType> BookingType { get; set; }
         public DbSet<Entities> Entities { get; set; }
         public DbSet<EntitiesDoctors> EntitiesDoctors { get; set; }
+        public DbSet<Patients> Patients { get; set; }
+        public DbSet<Allergies> Allergies { get; set; }
+        public DbSet<Condations> Condations { get; set; }
+        public DbSet<HumanBody> HumanBody { get; set; }
+        public DbSet<BloodPressure> BloodPressure { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -26,6 +31,8 @@ namespace MediRec.Models
         {
             return new ApplicationDbContext();
         }
+
+        //public System.Data.Entity.DbSet<MediRec.Models.Allergies> Allergies { get; set; }
 
         //public System.Data.Entity.DbSet<MediRec.ViewModel.RoleViewModel> RoleViewModels { get; set; }
     }
