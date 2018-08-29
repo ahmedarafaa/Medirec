@@ -30,7 +30,7 @@ namespace MediRec.Controllers.MediAPI
         {
             var humanBody = _context.HumanBody.OrderByDescending(o => o.Date).FirstOrDefault(h => h.UserId == id);
             if (humanBody == null)
-                return NotFound();
+                throw new HttpResponseException(HttpStatusCode.NotFound);
 
             return Ok(humanBody);
         }

@@ -22,6 +22,7 @@ namespace MediRec.Models
         public DbSet<HumanBody> HumanBody { get; set; }
         public DbSet<BloodPressure> BloodPressure { get; set; }
         public DbSet<Medications> Medications { get; set; }
+        public DbSet<MedicalDevices> MedicalDevices { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

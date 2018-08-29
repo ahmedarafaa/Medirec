@@ -224,7 +224,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EntitiesController.cs" />
-    <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MediAPI\AllergiesController.cs" />
@@ -237,14 +236,17 @@
     <Compile Include="Controllers\MediAPI\DoctorsController.cs" />
     <Compile Include="Controllers\MediAPI\EntitiesController.cs" />
     <Compile Include="Controllers\MediAPI\HumanBodiesController.cs" />
+    <Compile Include="Controllers\MediAPI\MedicalDevicesController.cs" />
     <Compile Include="Controllers\MediAPI\MedicationsController.cs" />
     <Compile Include="Controllers\MediAPI\PatientsController.cs" />
+    <Compile Include="Controllers\MedicalDevicesController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Dtos\AllergiesDto.cs" />
     <Compile Include="Dtos\BloodPressureDto.cs" />
     <Compile Include="Dtos\CondationsDto.cs" />
     <Compile Include="Dtos\DoctorsDto.cs" />
     <Compile Include="Dtos\HumanBodyDto.cs" />
+    <Compile Include="Dtos\MedicalDevicesDto.cs" />
     <Compile Include="Dtos\MedicationsDto.cs" />
     <Compile Include="Dtos\PatientsDto.cs" />
     <Compile Include="Global.asax.cs">
@@ -359,6 +361,10 @@
     <Compile Include="Migrations\201808270657034_AddNewtableMecications.Designer.cs">
       <DependentUpon>201808270657034_AddNewtableMecications.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808291139126_AddNewTableMedicalDevices.cs" />
+    <Compile Include="Migrations\201808291139126_AddNewTableMedicalDevices.Designer.cs">
+      <DependentUpon>201808291139126_AddNewTableMedicalDevices.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Allergies.cs" />
@@ -376,6 +382,7 @@
     <Compile Include="Models\HumanBody.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MedicalDevices.cs" />
     <Compile Include="Models\Medications.cs" />
     <Compile Include="Models\Patients.cs" />
     <Compile Include="Models\RoleName.cs" />
@@ -481,7 +488,11 @@
     <Content Include="Views\Entities\Details.cshtml" />
     <Content Include="Views\Entities\Edit.cshtml" />
     <Content Include="Views\Entities\Index.cshtml" />
-    <Content Include="Views\FileUpload\Index.cshtml" />
+    <Content Include="Views\MedicalDevices\Create.cshtml" />
+    <Content Include="Views\MedicalDevices\Delete.cshtml" />
+    <Content Include="Views\MedicalDevices\Details.cshtml" />
+    <Content Include="Views\MedicalDevices\Edit.cshtml" />
+    <Content Include="Views\MedicalDevices\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -581,6 +592,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808270657034_AddNewtableMecications.resx">
       <DependentUpon>201808270657034_AddNewtableMecications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808291139126_AddNewTableMedicalDevices.resx">
+      <DependentUpon>201808291139126_AddNewTableMedicalDevices.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
