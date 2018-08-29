@@ -81,10 +81,10 @@ namespace MediRec.Controllers.MediAPI
         }
 
         [HttpPost]
-        [Route("api/UploadResourcesPhoto/{userId}")]
-        public IHttpActionResult UploadResourcesPhoto(int userId)
+        [Route("api/UploadResourcesPhoto/{resourceId}")]
+        public IHttpActionResult UploadResourcesPhoto(int resourceId)
         {
-            var resources = _context.Resources.SingleOrDefault(p => p.UserId == userId);
+            var resources = _context.Resources.SingleOrDefault(p => p.ResourcesId == resourceId);
 
             //return Ok(HttpContext.Current.Server.MapPath(""));
 
