@@ -39,6 +39,17 @@ namespace MediRec.Controllers.MediAPI
             return Ok(allergies);
         }
 
+        [Route("api/GetAllergiesDetails/{userId}")]
+        [ResponseType(typeof(Allergies))]
+        public IHttpActionResult GetAllergiesDetails(int id)
+        {
+            var allergies = _context.Allergies.Where(a => a.UserId == id);
+            if (allergies == null)
+                return NotFound();
+
+            return Ok(allergies);
+        }
+
         // PUT: api/Allergies/5
         [ResponseType(typeof(void))]
         [HttpPut]

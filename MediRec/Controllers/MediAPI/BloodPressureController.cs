@@ -38,6 +38,18 @@ namespace MediRec.Controllers.MediAPI
             return Ok(bloodPressure);
         }
 
+        [Route("api/GetBloodPressureDetails/{userId}")]
+        [ResponseType(typeof(BloodPressure))]
+        public IHttpActionResult GetBloodPressureDetails(int id)
+        {
+            var bloodPressure = _context.BloodPressure.Where(b => b.UserId == id);
+            if (bloodPressure == null)
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+
+            //return Mapper.Map<BloodPressure, BloodPressureDto>(bloodPressure);
+            return Ok(bloodPressure);
+        }
+
         // PUT: api/BloodPressure/5
         [ResponseType(typeof(void))]
         [HttpPut]
