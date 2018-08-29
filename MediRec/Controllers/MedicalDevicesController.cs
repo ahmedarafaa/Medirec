@@ -10,6 +10,7 @@ using MediRec.Models;
 
 namespace MediRec.Controllers
 {
+    [Authorize(Roles = RoleName.Admin)]
     public class MedicalDevicesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
