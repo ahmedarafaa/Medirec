@@ -24,6 +24,9 @@ namespace MediRec.App_Start
             Mapper.CreateMap<Medications, MedicationsDto>();
             Mapper.CreateMap<MedicalDevices, MedicalDevicesDto>();
             Mapper.CreateMap<Resources, ResourcesDto>();
+            Mapper.CreateMap<Contacts, ContactsDto>();
+            Mapper.CreateMap<Vaccines, VaccinesDto>();
+            Mapper.CreateMap<Immunizations, ImmunizationsDto>();
 
             //Dto to Domain 
 
@@ -36,6 +39,9 @@ namespace MediRec.App_Start
             Mapper.CreateMap<MedicationsDto, Medications>();
             Mapper.CreateMap<MedicalDevicesDto, MedicalDevices>();
             Mapper.CreateMap<ResourcesDto, Resources>();
+            Mapper.CreateMap<ContactsDto, Contacts>();
+            Mapper.CreateMap<VaccinesDto, Vaccines>();
+            Mapper.CreateMap<ImmunizationsDto, Immunizations>();
 
         }
     }

@@ -50,6 +50,18 @@ namespace MediRec.Controllers.MediAPI
             return Ok(resources);
         }
 
+        [Route("api/GetResourcesCount/{userId}")]
+        [ResponseType(typeof(Resources))]
+        public IHttpActionResult GetResourcesCount(int userId)
+        {
+            var resources = _context.Resources.Count(i => i.UserId == userId);
+
+            if (resources == 0)
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+
+            return Ok(resources);
+        }
+
         // PUT: api/Resources/5
         [ResponseType(typeof(void))]
         public void PutResources(int id, ResourcesDto resourcesDto)
@@ -102,10 +114,10 @@ namespace MediRec.Controllers.MediAPI
                     if (fileExtention == ".jpg" || fileExtention == ".png")
                     {
                         Guid id = Guid.NewGuid();
+                        resources.Name = new FileInfo(file.FileName).Name;
                         fileName = id.ToString() + "_" + fileName;
                         file.SaveAs(destinationPath + Path.GetFileName(fileName));
                         resources.ImageUrl = "Documents/" + fileName;
-                        resources.Name = fileName;
                         _context.Entry(resources).State = EntityState.Modified;
                         _context.SaveChanges();
                         return Ok("OK");

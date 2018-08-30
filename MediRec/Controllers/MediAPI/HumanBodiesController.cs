@@ -35,6 +35,30 @@ namespace MediRec.Controllers.MediAPI
             return Ok(humanBody);
         }
 
+        [Route("api/GetHumanBodyDetails/{userId}")]
+        [ResponseType(typeof(HumanBody))]
+        public IHttpActionResult GetHumanBodyDetails(int userId)
+        {
+            var humanBody = _context.HumanBody.Where(m => m.UserId == userId);
+
+            if (humanBody == null)
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+
+            return Ok(humanBody);
+        }
+
+        [Route("api/GetHumanBodyCount/{userId}")]
+        [ResponseType(typeof(HumanBody))]
+        public IHttpActionResult GetHumanBodyCount(int userId)
+        {
+            var humanBody = _context.HumanBody.Count(i => i.UserId == userId);
+
+            if (humanBody == 0)
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+
+            return Ok(humanBody);
+        }
+
         // PUT: api/HumanBodies/5
         [ResponseType(typeof(void))]
         [HttpPut]

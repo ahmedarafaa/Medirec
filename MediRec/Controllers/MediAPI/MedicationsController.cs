@@ -48,6 +48,18 @@ namespace MediRec.Controllers.MediAPI
             return Ok(medications);
         }
 
+        [Route("api/GetMedicationsCount/{userId}")]
+        [ResponseType(typeof(Medications))]
+        public IHttpActionResult GetMedicationsCount(int userId)
+        {
+            var medications = _context.Medications.Count(i => i.UserId == userId);
+
+            if (medications == 0)
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+
+            return Ok(medications);
+        }
+
         // PUT: api/Medications/5
         [ResponseType(typeof(void))]
         public void PutMedications(int id, MedicationsDto medicationsDto)

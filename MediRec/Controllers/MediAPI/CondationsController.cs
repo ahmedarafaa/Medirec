@@ -39,6 +39,30 @@ namespace MediRec.Controllers.MediAPI
             return Ok(condations);
         }
 
+        [Route("api/GetCondationsDetails/{userId}")]
+        [ResponseType(typeof(Condations))]
+        public IHttpActionResult GetCondationsDetails(int userId)
+        {
+            var condations = _context.Condations.Where(m => m.UserId == userId);
+
+            if (condations == null)
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+
+            return Ok(condations);
+        }
+
+        [Route("api/GetCondationsCount/{userId}")]
+        [ResponseType(typeof(Condations))]
+        public IHttpActionResult GetCondationsCount(int userId)
+        {
+            var condations = _context.Condations.Count(i => i.UserId == userId);
+
+            if (condations <= 0)
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+
+            return Ok(condations);
+        }
+
         // PUT: api/Condations/5
         [ResponseType(typeof(void))]
         [HttpPut]

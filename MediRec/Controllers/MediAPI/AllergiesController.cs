@@ -50,6 +50,18 @@ namespace MediRec.Controllers.MediAPI
             return Ok(allergies);
         }
 
+        [Route("api/GetAllergiesCount/{userId}")]
+        [ResponseType(typeof(Allergies))]
+        public IHttpActionResult GetAllergiesCount(int userId)
+        {
+            var allergies = _context.Allergies.Count(i => i.UserId == userId);
+
+            if (allergies <= 0)
+                return NotFound();
+
+            return Ok(allergies);
+        }
+
         // PUT: api/Allergies/5
         [ResponseType(typeof(void))]
         [HttpPut]

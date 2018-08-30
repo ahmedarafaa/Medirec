@@ -223,35 +223,44 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\EntitiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImmunizationsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MediAPI\AllergiesController.cs" />
     <Compile Include="Controllers\MediAPI\AreasController.cs" />
     <Compile Include="Controllers\MediAPI\BloodPressureController.cs" />
     <Compile Include="Controllers\MediAPI\CitiesController.cs" />
     <Compile Include="Controllers\MediAPI\CondationsController.cs" />
+    <Compile Include="Controllers\MediAPI\ContactsController.cs" />
     <Compile Include="Controllers\MediAPI\CountriesController.cs" />
     <Compile Include="Controllers\MediAPI\DoctorRegisterController.cs" />
     <Compile Include="Controllers\MediAPI\DoctorsController.cs" />
     <Compile Include="Controllers\MediAPI\EntitiesController.cs" />
     <Compile Include="Controllers\MediAPI\HumanBodiesController.cs" />
+    <Compile Include="Controllers\MediAPI\ImmunizationsController.cs" />
     <Compile Include="Controllers\MediAPI\MedicalDevicesController.cs" />
     <Compile Include="Controllers\MediAPI\MedicationsController.cs" />
     <Compile Include="Controllers\MediAPI\PatientsController.cs" />
     <Compile Include="Controllers\MediAPI\ResourcesController.cs" />
+    <Compile Include="Controllers\MediAPI\VaccinesController.cs" />
     <Compile Include="Controllers\MedicalDevicesController.cs" />
     <Compile Include="Controllers\ResourcesController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\VaccinesController.cs" />
     <Compile Include="Dtos\AllergiesDto.cs" />
     <Compile Include="Dtos\BloodPressureDto.cs" />
     <Compile Include="Dtos\CondationsDto.cs" />
+    <Compile Include="Dtos\ContactsDto.cs" />
     <Compile Include="Dtos\DoctorsDto.cs" />
     <Compile Include="Dtos\HumanBodyDto.cs" />
+    <Compile Include="Dtos\ImmunizationsDto.cs" />
     <Compile Include="Dtos\MedicalDevicesDto.cs" />
     <Compile Include="Dtos\MedicationsDto.cs" />
     <Compile Include="Dtos\PatientsDto.cs" />
     <Compile Include="Dtos\ResourcesDto.cs" />
+    <Compile Include="Dtos\VaccinesDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -372,6 +381,26 @@
     <Compile Include="Migrations\201808291223364_AddNewTableResources.Designer.cs">
       <DependentUpon>201808291223364_AddNewTableResources.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808291806294_AddNewTableContacts.cs" />
+    <Compile Include="Migrations\201808291806294_AddNewTableContacts.Designer.cs">
+      <DependentUpon>201808291806294_AddNewTableContacts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808291843506_UpdateTypeOfRelationLenght.cs" />
+    <Compile Include="Migrations\201808291843506_UpdateTypeOfRelationLenght.Designer.cs">
+      <DependentUpon>201808291843506_UpdateTypeOfRelationLenght.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808300621357_AddNewTableVaccines.cs" />
+    <Compile Include="Migrations\201808300621357_AddNewTableVaccines.Designer.cs">
+      <DependentUpon>201808300621357_AddNewTableVaccines.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808300623538_AddNewTableImmunizations.cs" />
+    <Compile Include="Migrations\201808300623538_AddNewTableImmunizations.Designer.cs">
+      <DependentUpon>201808300623538_AddNewTableImmunizations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808300632358_AddVaccineCodeToVaccineTable.cs" />
+    <Compile Include="Migrations\201808300632358_AddVaccineCodeToVaccineTable.Designer.cs">
+      <DependentUpon>201808300632358_AddVaccineCodeToVaccineTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Allergies.cs" />
@@ -382,12 +411,14 @@
     <Compile Include="Models\BookingType.cs" />
     <Compile Include="Models\Cities.cs" />
     <Compile Include="Models\Condations.cs" />
+    <Compile Include="Models\Contacts.cs" />
     <Compile Include="Models\Countries.cs" />
     <Compile Include="Models\Doctors.cs" />
     <Compile Include="Models\Entities.cs" />
     <Compile Include="Models\EntitiesDoctors.cs" />
     <Compile Include="Models\HumanBody.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Immunizations.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MedicalDevices.cs" />
     <Compile Include="Models\Medications.cs" />
@@ -395,6 +426,7 @@
     <Compile Include="Models\Resources.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="Models\Specialties.cs" />
+    <Compile Include="Models\Vaccines.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\AddPhoneNumberViewModel.cs" />
@@ -506,6 +538,21 @@
     <Content Include="Views\Resources\Details.cshtml" />
     <Content Include="Views\Resources\Edit.cshtml" />
     <Content Include="Views\Resources\Index.cshtml" />
+    <Content Include="Views\Contacts\Create.cshtml" />
+    <Content Include="Views\Contacts\Delete.cshtml" />
+    <Content Include="Views\Contacts\Details.cshtml" />
+    <Content Include="Views\Contacts\Edit.cshtml" />
+    <Content Include="Views\Contacts\Index.cshtml" />
+    <Content Include="Views\Immunizations\Create.cshtml" />
+    <Content Include="Views\Immunizations\Delete.cshtml" />
+    <Content Include="Views\Immunizations\Details.cshtml" />
+    <Content Include="Views\Immunizations\Edit.cshtml" />
+    <Content Include="Views\Immunizations\Index.cshtml" />
+    <Content Include="Views\Vaccines\Create.cshtml" />
+    <Content Include="Views\Vaccines\Delete.cshtml" />
+    <Content Include="Views\Vaccines\Details.cshtml" />
+    <Content Include="Views\Vaccines\Edit.cshtml" />
+    <Content Include="Views\Vaccines\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -611,6 +658,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808291223364_AddNewTableResources.resx">
       <DependentUpon>201808291223364_AddNewTableResources.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808291806294_AddNewTableContacts.resx">
+      <DependentUpon>201808291806294_AddNewTableContacts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808291843506_UpdateTypeOfRelationLenght.resx">
+      <DependentUpon>201808291843506_UpdateTypeOfRelationLenght.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808300621357_AddNewTableVaccines.resx">
+      <DependentUpon>201808300621357_AddNewTableVaccines.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808300623538_AddNewTableImmunizations.resx">
+      <DependentUpon>201808300623538_AddNewTableImmunizations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808300632358_AddVaccineCodeToVaccineTable.resx">
+      <DependentUpon>201808300632358_AddVaccineCodeToVaccineTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

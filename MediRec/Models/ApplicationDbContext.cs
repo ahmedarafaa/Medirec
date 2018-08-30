@@ -24,6 +24,9 @@ namespace MediRec.Models
         public DbSet<Medications> Medications { get; set; }
         public DbSet<MedicalDevices> MedicalDevices { get; set; }
         public DbSet<Resources> Resources { get; set; }
+        public DbSet<Contacts> Contacts { get; set; }
+        public DbSet<Vaccines> Vaccines { get; set; }
+        public DbSet<Immunizations> Immunizations { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
