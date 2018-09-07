@@ -74,10 +74,6 @@ namespace MediRec.Models
         [Required]
         public int WaitingTime { get; set; }
 
-        //[Required]
-        //public int BookingTypeId { get; set; }
-        //public BookingType BookingType { get; set; }
-
         [Required]
         [StringLength(225)]
         public string SearchName { get; set; }

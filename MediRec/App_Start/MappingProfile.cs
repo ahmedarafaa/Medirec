@@ -30,6 +30,7 @@ namespace MediRec.App_Start
             Mapper.CreateMap<Countries, CountriesDto>();
             Mapper.CreateMap<Cities, CitiesDto>();
             Mapper.CreateMap<Areas, AreasDto>();
+            Mapper.CreateMap<Specialties, SpecialtiesDto>();
 
             //Dto to Domain 
 
@@ -48,6 +49,7 @@ namespace MediRec.App_Start
             Mapper.CreateMap<CountriesDto, Countries>();
             Mapper.CreateMap<CitiesDto, Cities>();
             Mapper.CreateMap<AreasDto, Areas>();
+            Mapper.CreateMap<SpecialtiesDto, Specialties>();
 
         }
     }

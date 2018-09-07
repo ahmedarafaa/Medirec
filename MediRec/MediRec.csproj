@@ -245,6 +245,7 @@
     <Compile Include="Controllers\MediAPI\MedicationsController.cs" />
     <Compile Include="Controllers\MediAPI\PatientsController.cs" />
     <Compile Include="Controllers\MediAPI\ResourcesController.cs" />
+    <Compile Include="Controllers\MediAPI\SpecialtiesController.cs" />
     <Compile Include="Controllers\MediAPI\VaccinesController.cs" />
     <Compile Include="Controllers\MedicalDevicesController.cs" />
     <Compile Include="Controllers\ResourcesController.cs" />
@@ -257,13 +258,14 @@
     <Compile Include="Dtos\CondationsDto.cs" />
     <Compile Include="Dtos\ContactsDto.cs" />
     <Compile Include="Dtos\CountriesDto.cs" />
-    <Compile Include="Dtos\DoctorsDto.cs" />
+    <Compile Include="Dtos\DoctorsDtoSearch.cs" />
     <Compile Include="Dtos\HumanBodyDto.cs" />
     <Compile Include="Dtos\ImmunizationsDto.cs" />
     <Compile Include="Dtos\MedicalDevicesDto.cs" />
     <Compile Include="Dtos\MedicationsDto.cs" />
     <Compile Include="Dtos\PatientsDto.cs" />
     <Compile Include="Dtos\ResourcesDto.cs" />
+    <Compile Include="Dtos\SpecialtiesDto.cs" />
     <Compile Include="Dtos\VaccinesDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

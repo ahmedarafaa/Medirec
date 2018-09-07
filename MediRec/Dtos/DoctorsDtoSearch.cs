@@ -10,20 +10,39 @@ namespace MediRec.Dtos
     public class DoctorsDtoSearch
     {
 
+        [Key]
+        public int DoctorId { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        public string NameAr { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        public string NameEn { get; set; }
+
         [Required]
         public byte SpecialtyId { get; set; }
 
         [Required]
         public int CityId { get; set; }
-        public Cities Cities { get; set; }
 
         [Required]
         public int AreaId { get; set; }
-        public Areas Areas { get; set; }
 
         [Required]
         [StringLength(1)]
         public string Gender { get; set; }
+
+        [Required]
+        public double TickerPrice { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        public string Address { get; set; }
+
+        [Required]
+        public int WaitingTime { get; set; }
 
         [Required]
         [StringLength(225)]

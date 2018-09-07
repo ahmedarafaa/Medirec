@@ -42,10 +42,5 @@ namespace MediRec.Models
 
         [DataType(DataType.Date)]
         public DateTime? ModifiedDateTime { get; set; }
-
-        public static implicit operator Specialties(HashSet<Specialties> v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
