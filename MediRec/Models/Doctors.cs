@@ -28,7 +28,6 @@ namespace MediRec.Models
         [StringLength(100)]
         public string NameEn { get; set; }
 
-
         [Required]
         public byte SpecialtyId { get; set; }
         public virtual ICollection<Specialties> Specialties { get; set; }
@@ -82,6 +81,15 @@ namespace MediRec.Models
         [Required]
         [StringLength(225)]
         public string SearchName { get; set; }
+
+        [Required]
+        [StringLength(11, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 11)]
+        [Phone]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        public bool IsActive { get; set; }
 
         [StringLength(225)]
         public string CreatedBy { get; set; }

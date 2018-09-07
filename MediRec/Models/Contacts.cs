@@ -22,12 +22,12 @@ namespace MediRec.Models
         [Required]
         [StringLength(11, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 11)]
         [Phone]
-        [Display(Name = "Phone Number")]
+        [Display(Name = "Phone Number 1")]
         public string PhoneNumber01 { get; set; }
 
         [StringLength(11, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 11)]
         [Phone]
-        [Display(Name = "Phone Number")]
+        [Display(Name = "Phone Number 2")]
         public string PhoneNumber02 { get; set; }
 
         [EmailAddress]

@@ -27,6 +27,7 @@ namespace MediRec.Controllers.MediAPI
 
         // GET: api/Immunizations/5
         [EnableQuery(PageSize = 10)]
+        [Route("api/Immunizations/{userId}")]
         [ResponseType(typeof(Immunizations))]
         public IHttpActionResult GetImmunizations(int userId)
         {
@@ -37,7 +38,17 @@ namespace MediRec.Controllers.MediAPI
 
             //return Mapper.Map<Immunizations,ImmunizationsDto>(immunizations);
 
-            var immunizations = _context.Immunizations.Where(i => i.UserId == userId);
+            var immunizations = _context.Immunizations.Where(im => im.UserId == userId)
+                .Join(_context.Vaccines,i => i.VaccineId,v => v.VaccineId,
+                (immunization, vaccine) => new
+                {
+                    VaccineName = vaccine.Name,
+                    immunization.DateGiven,
+                    immunization.AdministratedBy,
+                    immunization.NextDoesDate
+                }
+                );
+
             if (immunizations == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 

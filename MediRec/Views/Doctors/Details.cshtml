@@ -1,0 +1,179 @@
+﻿@model MediRec.Models.Doctors
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Doctors</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Areas.AreaCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Areas.AreaCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cities.CountryCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cities.CountryCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Countries.CountryCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Countries.CountryCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DoctorCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DoctorCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NameAr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameAr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NameEn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameEn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SpecialtyId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpecialtyId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TickerPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TickerPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AboutDoctorShortDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AboutDoctorShortDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AboutDoctorLongDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AboutDoctorLongDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BirthDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegisterDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegisterDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WaitingTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WaitingTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SearchName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SearchName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreadtedDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreadtedDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedDateTime)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DoctorId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

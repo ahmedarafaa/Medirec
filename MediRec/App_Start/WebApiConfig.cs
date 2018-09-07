@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.OData.Extensions;
+using System.Web.Http.Cors;
 
 namespace MediRec
 {
@@ -12,7 +13,6 @@ namespace MediRec
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
             var setting = config.Formatters.JsonFormatter.SerializerSettings;
             setting.ContractResolver = new CamelCasePropertyNamesContractResolver();
             setting.Formatting = Formatting.Indented;

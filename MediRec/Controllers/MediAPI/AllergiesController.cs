@@ -41,9 +41,9 @@ namespace MediRec.Controllers.MediAPI
 
         [Route("api/GetAllergiesDetails/{userId}")]
         [ResponseType(typeof(Allergies))]
-        public IHttpActionResult GetAllergiesDetails(int id)
+        public IHttpActionResult GetAllergiesDetails(int userId)
         {
-            var allergies = _context.Allergies.Where(a => a.UserId == id);
+            var allergies = _context.Allergies.Where(a => a.UserId == userId);
             if (allergies == null)
                 return NotFound();
 
@@ -56,8 +56,8 @@ namespace MediRec.Controllers.MediAPI
         {
             var allergies = _context.Allergies.Count(i => i.UserId == userId);
 
-            if (allergies <= 0)
-                return NotFound();
+            if (allergies == 0)
+                throw new HttpResponseException(HttpStatusCode.NoContent);
 
             return Ok(allergies);
         }

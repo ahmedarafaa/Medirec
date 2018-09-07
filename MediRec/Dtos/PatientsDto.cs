@@ -11,8 +11,14 @@ namespace MediRec.Dtos
         [Key]
         public int PatientId { get; set; }
 
+        public int UserId { get; set; }
+
         [StringLength(4)]
         public string PatientCode { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        public string FullName { get; set; }
 
         public int CountryId { get; set; }
 
@@ -22,19 +28,28 @@ namespace MediRec.Dtos
 
         public int InsuranceId { get; set; }
 
+        [Required]
+        [StringLength(11, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 11)]
+        [Phone]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        [StringLength(1)]
+        public string Gender { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        public string Address { get; set; }
+
         [StringLength(1500)]
         public string ImageURL { get; set; }
 
-        [StringLength(225)]
-        public string CreatedBy { get; set; }
-
+        [Display(Name = "Birth Date")]
         [DataType(DataType.Date)]
-        public DateTime? CreadtedDateTime { get; set; }
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        public DateTime BirthDate { get; set; }
 
-        [StringLength(225)]
-        public string ModifiedBy { get; set; }
 
-        [DataType(DataType.Date)]
-        public DateTime? ModifiedDateTime { get; set; }
     }
 }

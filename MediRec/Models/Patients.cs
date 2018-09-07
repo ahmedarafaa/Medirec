@@ -16,6 +16,14 @@ namespace MediRec.Models
         [StringLength(4)]
         public string PatientCode { get; set; }
 
+        [Required]
+        [StringLength(100)]
+        public string FullName { get; set; }
+
+        //[Required]
+        //[StringLength(100)]
+        //public string NameEn { get; set; }
+
         public int CountryId { get; set; }
 
         public int CityId { get; set; }
@@ -24,8 +32,26 @@ namespace MediRec.Models
 
         public int InsuranceId { get; set; }
 
+        [Required]
+        [StringLength(11, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 11)]
+        [Phone]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        [StringLength(1)]
+        public string Gender { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        public string Address { get; set; }
+
         [StringLength(1500)]
         public string ImageURL { get; set; }
+
+        [Display(Name = "Birth Date")]
+        [DataType(DataType.Date)]
+        public DateTime BirthDate { get; set; }
 
         [StringLength(225)]
         public string CreatedBy { get; set; }

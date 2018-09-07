@@ -41,9 +41,9 @@ namespace MediRec.Controllers.MediAPI
 
         [Route("api/GetResourcesDetails/{userId}")]
         [ResponseType(typeof(Resources))]
-        public IHttpActionResult GetResourcesDetails(int id)
+        public IHttpActionResult GetResourcesDetails(int userId)
         {
-            var resources = _context.Resources.Where(r => r.UserId == id);
+            var resources = _context.Resources.Where(r => r.UserId == userId);
             if (resources == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 

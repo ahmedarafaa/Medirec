@@ -40,9 +40,9 @@ namespace MediRec.Controllers.MediAPI
 
         [Route("api/GetBloodPressureDetails/{userId}")]
         [ResponseType(typeof(BloodPressure))]
-        public IHttpActionResult GetBloodPressureDetails(int id)
+        public IHttpActionResult GetBloodPressureDetails(int userId)
         {
-            var bloodPressure = _context.BloodPressure.Where(b => b.UserId == id);
+            var bloodPressure = _context.BloodPressure.Where(b => b.UserId == userId);
             if (bloodPressure == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
@@ -60,6 +60,36 @@ namespace MediRec.Controllers.MediAPI
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
             //return Mapper.Map<BloodPressure, BloodPressureDto>(bloodPressure);
+            return Ok(bloodPressure);
+        }
+
+        [Route("api/GetPressuresPerDays/{userId:int}/{days:int}")]
+        [ResponseType(typeof(BloodPressure))]
+        public IHttpActionResult GetPressuresPerDays(int userId, int days)
+        {
+            //DateTime lessThanXDays = DateTime.Now.AddDays(-(days+1));
+            DateTime lessThanXDays = DateTime.Now.AddDays(-(days));
+
+            var bloodPressure = _context.BloodPressure.OrderByDescending(bP => bP.Date).Where(b => b.Date > lessThanXDays & b.Date <= DateTime.Now & b.UserId == userId);
+
+            if (bloodPressure == null)
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+
+            return Ok(bloodPressure);
+        }
+
+        [Route("api/GetPressuresFromTo/{userId:int}/{fromDate:DateTime}/{toDate:DateTime}")]
+        [ResponseType(typeof(BloodPressure))]
+        public IHttpActionResult GetPressuresFromTo(int userId, DateTime fromDate,DateTime toDate)
+        {
+
+            var toDateP = toDate.AddDays(1);
+            var bloodPressure = _context.BloodPressure.OrderByDescending(bP => bP.Date)
+                .Where(b => (b.Date >= fromDate & b.Date <= toDateP) & b.UserId == userId);
+
+            if (bloodPressure == null)
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+
             return Ok(bloodPressure);
         }
 

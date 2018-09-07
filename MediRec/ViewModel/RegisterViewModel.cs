@@ -29,7 +29,6 @@ namespace MediRec.ViewModel
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
-
         public int UserId { get; set; }
 
         //End

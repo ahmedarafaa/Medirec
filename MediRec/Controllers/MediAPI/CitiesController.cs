@@ -8,18 +8,20 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using AutoMapper;
+using MediRec.Dtos;
 using MediRec.Models;
 
 namespace MediRec.Controllers.MediAPI
 {
     public class CitiesController : ApiController
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext _context = new ApplicationDbContext();
 
         // GET: api/Cities
-        public IQueryable<Cities> GetCities()
+        public IEnumerable<CitiesDto> GetCities()
         {
-            return db.Cities;
+            return _context.Cities.ToList().Select(Mapper.Map<Cities,CitiesDto>);
         }
 
         //// GET: api/Cities/5
@@ -105,14 +107,14 @@ namespace MediRec.Controllers.MediAPI
         {
             if (disposing)
             {
-                db.Dispose();
+                _context.Dispose();
             }
             base.Dispose(disposing);
         }
 
         private bool CitiesExists(int id)
         {
-            return db.Cities.Count(e => e.CityId == id) > 0;
+            return _context.Cities.Count(e => e.CityId == id) > 0;
         }
     }
 }

@@ -27,6 +27,7 @@ namespace MediRec.Controllers.MediAPI
         public IHttpActionResult GetAreas(int id)
         {
             var areas = db.Areas.Where(a => a.CityId == id);
+
             if (areas == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 

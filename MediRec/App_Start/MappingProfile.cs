@@ -15,7 +15,7 @@ namespace MediRec.App_Start
         public MappingProfile()
         {
             //Domain to Dto
-            Mapper.CreateMap<Doctors, DoctorsDto>();
+            Mapper.CreateMap<Doctors, DoctorsDtoSearch>();
             Mapper.CreateMap<Patients, PatientsDto>();
             Mapper.CreateMap<Allergies, AllergiesDto>();
             Mapper.CreateMap<Condations, CondationsDto>();
@@ -27,10 +27,13 @@ namespace MediRec.App_Start
             Mapper.CreateMap<Contacts, ContactsDto>();
             Mapper.CreateMap<Vaccines, VaccinesDto>();
             Mapper.CreateMap<Immunizations, ImmunizationsDto>();
+            Mapper.CreateMap<Countries, CountriesDto>();
+            Mapper.CreateMap<Cities, CitiesDto>();
+            Mapper.CreateMap<Areas, AreasDto>();
 
             //Dto to Domain 
 
-            Mapper.CreateMap<DoctorsDto, Doctors>();
+            Mapper.CreateMap<DoctorsDtoSearch, Doctors>();
             Mapper.CreateMap<PatientsDto, Patients>();
             Mapper.CreateMap<AllergiesDto, Allergies>();
             Mapper.CreateMap<CondationsDto, Condations>();
@@ -42,6 +45,9 @@ namespace MediRec.App_Start
             Mapper.CreateMap<ContactsDto, Contacts>();
             Mapper.CreateMap<VaccinesDto, Vaccines>();
             Mapper.CreateMap<ImmunizationsDto, Immunizations>();
+            Mapper.CreateMap<CountriesDto, Countries>();
+            Mapper.CreateMap<CitiesDto, Cities>();
+            Mapper.CreateMap<AreasDto, Areas>();
 
         }
     }

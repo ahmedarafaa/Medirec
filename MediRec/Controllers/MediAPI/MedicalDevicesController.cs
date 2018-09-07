@@ -40,9 +40,9 @@ namespace MediRec.Controllers.MediAPI
 
         [Route("api/GetMedicalDevicesDetails/{userId}")]
         [ResponseType(typeof(MedicalDevices))]
-        public IHttpActionResult GetMedicalDevicesDetails(int id)
+        public IHttpActionResult GetMedicalDevicesDetails(int userId)
         {
-            var medicalDevices = _context.MedicalDevices.Where(m => m.UserId == id);
+            var medicalDevices = _context.MedicalDevices.Where(m => m.UserId == userId);
 
             if (medicalDevices == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);

@@ -24,30 +24,35 @@ namespace MediRec.Controllers.MediAPI
         private ApplicationDbContext _context = new ApplicationDbContext();
 
         // GET: api/Patients
+        [Route("api/Patients")]
+        [HttpGet]
         public IQueryable<Patients> GetPatients()
         {
             return _context.Patients;
         }
 
         // GET: api/Patients/5
+        [HttpGet]
+        [Route("api/GetPatientsDetails/{userId}")]
         [ResponseType(typeof(Patients))]
-        public IHttpActionResult GetPatients(int id)
+        public IHttpActionResult GetPatientsDetails(int userId)
         {
 
             var patients =
-                from p in _context.Patients.Where(pa => pa.UserId == id)
+                from p in _context.Patients.Where(pa => pa.UserId == userId)
                 join c in _context.Cities on p.CityId equals c.CityId
                 join a in _context.Areas on p.AreaId equals a.AreaId
-                join u in _context.Users on p.UserId equals u.UserId
+                //join u in _context.Users on p.UserId equals u.UserId
                 select new
                 {
                     p.PatientCode,
                     c.NameEn,
                     AreaName = a.NameEn,
-                    u.FullName,
-                    u.Gender,
-                    Age = DateTime.Today.Year - u.BirthDate.Year,
-                    p.ImageURL
+                    p.FullName,
+                    p.Gender,
+                    Age = DateTime.Today.Year - p.BirthDate.Year,
+                    p.ImageURL,
+                    p.PhoneNumber
                 };
 
             //var patients = _context.Patients.Find(id);
@@ -58,14 +63,15 @@ namespace MediRec.Controllers.MediAPI
         }
 
         // PUT: api/Patients/5
-        [ResponseType(typeof(void))]
         [HttpPut]
-        public void PutPatients(int id, PatientsDto patientsDto)
+        [Route("api/Patients/{userId}")]
+        [ResponseType(typeof(void))]
+        public void PutPatients(int userId, PatientsDto patientsDto)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
-            var patient = _context.Patients.SingleOrDefault(p => p.UserId == id);
+            var patient = _context.Patients.SingleOrDefault(p => p.UserId == userId);
 
             if (patient == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
@@ -76,18 +82,21 @@ namespace MediRec.Controllers.MediAPI
         }
 
         // POST: api/Patients
+        [HttpPost]
+        [Route("api/Patients")]
         [ResponseType(typeof(Patients))]
-        public IHttpActionResult PostPatients(Patients patients)
+        public PatientsDto PostPatients(PatientsDto patientsDto)
         {
             if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
 
-            _context.Patients.Add(patients);
+            var patient = Mapper.Map<PatientsDto, Patients>(patientsDto);
+            _context.Patients.Add(patient);
             _context.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = patients.PatientId }, patients);
+            patientsDto.PatientId = patient.PatientId;
+
+            return patientsDto;
         }
 
         [HttpPost]
@@ -132,10 +141,12 @@ namespace MediRec.Controllers.MediAPI
         }
 
         // DELETE: api/Patients/5
+        [Route("api/Patients/{userId}")]
+        [HttpDelete]
         [ResponseType(typeof(Patients))]
-        public IHttpActionResult DeletePatients(int id)
+        public IHttpActionResult DeletePatients(int userId)
         {
-            Patients patients = _context.Patients.Find(id);
+            Patients patients = _context.Patients.SingleOrDefault(p => p.UserId == userId);
             if (patients == null)
             {
                 return NotFound();
