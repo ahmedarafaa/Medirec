@@ -87,6 +87,9 @@ namespace MediRec.Models
         [Required]
         public bool IsActive { get; set; }
 
+        [StringLength(1500)]
+        public string ImageURL { get; set; }
+
         [StringLength(225)]
         public string CreatedBy { get; set; }
 

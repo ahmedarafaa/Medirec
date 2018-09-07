@@ -51,5 +51,8 @@ namespace MediRec.Dtos
         [Required]
         public bool IsActive { get; set; }
 
+        [StringLength(1500)]
+        public string ImageURL { get; set; }
+
     }
 }

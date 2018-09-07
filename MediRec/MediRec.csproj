@@ -431,6 +431,10 @@
     <Compile Include="Migrations\201809071102285_AddIsActiveFieldInDoctorTable.Designer.cs">
       <DependentUpon>201809071102285_AddIsActiveFieldInDoctorTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809071324219_AddImageUrlIntoDoctorTable.cs" />
+    <Compile Include="Migrations\201809071324219_AddImageUrlIntoDoctorTable.Designer.cs">
+      <DependentUpon>201809071324219_AddImageUrlIntoDoctorTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Allergies.cs" />
@@ -726,6 +730,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809071102285_AddIsActiveFieldInDoctorTable.resx">
       <DependentUpon>201809071102285_AddIsActiveFieldInDoctorTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809071324219_AddImageUrlIntoDoctorTable.resx">
+      <DependentUpon>201809071324219_AddImageUrlIntoDoctorTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
