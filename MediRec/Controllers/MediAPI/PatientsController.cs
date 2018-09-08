@@ -31,6 +31,19 @@ namespace MediRec.Controllers.MediAPI
             return _context.Patients;
         }
 
+        // GET: api/Patients
+        [Route("api/Patients/{userId}")]
+        [HttpGet]
+        public PatientsDto GetPatients(int userId)
+        {
+            var patients = _context.Patients.SingleOrDefault(p => p.UserId == userId);
+
+            if (patients == null)
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+
+            return Mapper.Map<Patients,PatientsDto>(patients);
+        }
+
         // GET: api/Patients/5
         [HttpGet]
         [Route("api/GetPatientsDetails/{userId}")]

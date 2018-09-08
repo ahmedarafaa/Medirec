@@ -70,7 +70,9 @@ namespace MediRec.Controllers.MediAPI
             //DateTime lessThanXDays = DateTime.Now.AddDays(-(days+1));
             DateTime lessThanXDays = DateTime.Now.AddDays(-(days));
 
-            var bloodPressure = _context.BloodPressure.OrderByDescending(bP => bP.Date).Where(b => b.Date > lessThanXDays & b.Date <= DateTime.Now & b.UserId == userId);
+            var bloodPressure = _context.BloodPressure
+                .OrderByDescending(bP => bP.Date)
+                .Where(b => b.Date > lessThanXDays & b.Date <= DateTime.Now & b.UserId == userId);
 
             if (bloodPressure == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);

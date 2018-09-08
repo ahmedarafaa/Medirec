@@ -17,9 +17,14 @@ namespace MediRec.Controllers.MediAPI
 
         // GET: api/Doctors
         [EnableQuery(PageSize = 10)]
-        public IEnumerable<DoctorsDtoSearch> GetDoctors()
+        public IHttpActionResult GetDoctors()
         {
-            return _context.Doctors.ToList().Select(Mapper.Map<Doctors,DoctorsDtoSearch>);
+            var doctor = _context.Doctors.Where(d => d.IsActive == true);
+
+            if (doctor == null)
+                throw new HttpResponseException(HttpStatusCode.NoContent);
+
+            return Ok(doctor);
         }
 
         protected override void Dispose(bool disposing)
