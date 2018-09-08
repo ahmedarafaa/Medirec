@@ -19,7 +19,7 @@ namespace MediRec.Controllers.MediAPI
         [EnableQuery(PageSize = 10)]
         public IHttpActionResult GetDoctors()
         {
-            var doctor = _context.Doctors.Where(d => d.IsActive == true);
+            var doctor = _context.Doctors.Where(d => d.IsActive == false);
 
             if (doctor == null)
                 throw new HttpResponseException(HttpStatusCode.NoContent);
