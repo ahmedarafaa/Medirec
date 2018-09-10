@@ -435,6 +435,22 @@
     <Compile Include="Migrations\201809071324219_AddImageUrlIntoDoctorTable.Designer.cs">
       <DependentUpon>201809071324219_AddImageUrlIntoDoctorTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809101050519_AddRelationBetweenEntitiesAndCountries.cs" />
+    <Compile Include="Migrations\201809101050519_AddRelationBetweenEntitiesAndCountries.Designer.cs">
+      <DependentUpon>201809101050519_AddRelationBetweenEntitiesAndCountries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809101057247_AddRelationBetweenEntitiesAndCountries1.cs" />
+    <Compile Include="Migrations\201809101057247_AddRelationBetweenEntitiesAndCountries1.Designer.cs">
+      <DependentUpon>201809101057247_AddRelationBetweenEntitiesAndCountries1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809101059387_AddRelationBetweenEntitiesAndCities.cs" />
+    <Compile Include="Migrations\201809101059387_AddRelationBetweenEntitiesAndCities.Designer.cs">
+      <DependentUpon>201809101059387_AddRelationBetweenEntitiesAndCities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809101100321_AddRelationBetweenEntitiesAndAreas.cs" />
+    <Compile Include="Migrations\201809101100321_AddRelationBetweenEntitiesAndAreas.Designer.cs">
+      <DependentUpon>201809101100321_AddRelationBetweenEntitiesAndAreas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Allergies.cs" />
@@ -733,6 +749,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809071324219_AddImageUrlIntoDoctorTable.resx">
       <DependentUpon>201809071324219_AddImageUrlIntoDoctorTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809101050519_AddRelationBetweenEntitiesAndCountries.resx">
+      <DependentUpon>201809101050519_AddRelationBetweenEntitiesAndCountries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809101057247_AddRelationBetweenEntitiesAndCountries1.resx">
+      <DependentUpon>201809101057247_AddRelationBetweenEntitiesAndCountries1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809101059387_AddRelationBetweenEntitiesAndCities.resx">
+      <DependentUpon>201809101059387_AddRelationBetweenEntitiesAndCities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809101100321_AddRelationBetweenEntitiesAndAreas.resx">
+      <DependentUpon>201809101100321_AddRelationBetweenEntitiesAndAreas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

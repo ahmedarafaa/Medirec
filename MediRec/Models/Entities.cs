@@ -21,10 +21,16 @@ namespace MediRec.Models
         [Required]
         public string NameEn { get; set; }
 
+        [Required]
         public int CountryId { get; set; }
+        public Countries Countries { get; set; }
 
+        [Required]
         public int CityId { get; set; }
+        public Cities Cities { get; set; }
 
+        [Required]
         public int AreaId { get; set; }
+        public Areas Areas { get; set; }
     }
 }
