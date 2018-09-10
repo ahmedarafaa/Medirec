@@ -20,7 +20,7 @@ namespace MediRec.Controllers.MediAPI
 
         
         // GET: api/Calenders/5
-        [Route("api/CalendersDetails/{doctorId}/{entityId}")]
+        [Route("api/Calenders/{doctorId}/{entityId}")]
         [ResponseType(typeof(Calenders))]
         public IHttpActionResult GetCalenders(int doctorId,int entityId)
         {

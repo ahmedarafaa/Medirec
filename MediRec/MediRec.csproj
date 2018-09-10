@@ -232,6 +232,7 @@
     <Compile Include="Controllers\MediAPI\AreasController.cs" />
     <Compile Include="Controllers\MediAPI\BloodPressureController.cs" />
     <Compile Include="Controllers\MediAPI\CalendersController.cs" />
+    <Compile Include="Controllers\MediAPI\CalendersDetailsController.cs" />
     <Compile Include="Controllers\MediAPI\CitiesController.cs" />
     <Compile Include="Controllers\MediAPI\CondationsController.cs" />
     <Compile Include="Controllers\MediAPI\ContactsController.cs" />
@@ -253,6 +254,7 @@
     <Compile Include="Dtos\AllergiesDto.cs" />
     <Compile Include="Dtos\AreasDto.cs" />
     <Compile Include="Dtos\BloodPressureDto.cs" />
+    <Compile Include="Dtos\CalendersDetailsDto.cs" />
     <Compile Include="Dtos\CalendersDto.cs" />
     <Compile Include="Dtos\CitiesDto.cs" />
     <Compile Include="Dtos\CondationsDto.cs" />
@@ -474,6 +476,10 @@
     <Compile Include="Migrations\201809101136246_AddIndexToCalenders.cs" />
     <Compile Include="Migrations\201809101136246_AddIndexToCalenders.Designer.cs">
       <DependentUpon>201809101136246_AddIndexToCalenders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809101225320_AddNewTableCalendersDetails.cs" />
+    <Compile Include="Migrations\201809101225320_AddNewTableCalendersDetails.Designer.cs">
+      <DependentUpon>201809101225320_AddNewTableCalendersDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -805,6 +811,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809101136246_AddIndexToCalenders.resx">
       <DependentUpon>201809101136246_AddIndexToCalenders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809101225320_AddNewTableCalendersDetails.resx">
+      <DependentUpon>201809101225320_AddNewTableCalendersDetails.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
