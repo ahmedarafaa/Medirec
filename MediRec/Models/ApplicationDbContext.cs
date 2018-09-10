@@ -28,6 +28,7 @@ namespace MediRec.Models
         public DbSet<Vaccines> Vaccines { get; set; }
         public DbSet<Immunizations> Immunizations { get; set; }
         public DbSet<EntitiesTypes> EntitiesTypes { get; set; }
+        public DbSet<Calenders> Calenders { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

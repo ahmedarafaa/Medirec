@@ -5,9 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace MediRec.Models
+namespace MediRec.Dtos
 {
-    public class Calenders
+    public class CalendersDto
     {
         [Key]
         public int CalendersId { get; set; }
@@ -28,11 +28,8 @@ namespace MediRec.Models
 
         [Index("IX_Calenders", 5, IsUnique = true)]
         public int DoctorId { get; set; }
-        public Doctors Doctors { get; set; }
 
         [Index("IX_Calenders", 6, IsUnique = true)]
         public int EntityId { get; set; }
-        public Entities Entities { get; set; }
-
     }
 }

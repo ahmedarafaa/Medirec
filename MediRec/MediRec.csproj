@@ -231,6 +231,7 @@
     <Compile Include="Controllers\MediAPI\AllergiesController.cs" />
     <Compile Include="Controllers\MediAPI\AreasController.cs" />
     <Compile Include="Controllers\MediAPI\BloodPressureController.cs" />
+    <Compile Include="Controllers\MediAPI\CalendersController.cs" />
     <Compile Include="Controllers\MediAPI\CitiesController.cs" />
     <Compile Include="Controllers\MediAPI\CondationsController.cs" />
     <Compile Include="Controllers\MediAPI\ContactsController.cs" />
@@ -252,6 +253,7 @@
     <Compile Include="Dtos\AllergiesDto.cs" />
     <Compile Include="Dtos\AreasDto.cs" />
     <Compile Include="Dtos\BloodPressureDto.cs" />
+    <Compile Include="Dtos\CalendersDto.cs" />
     <Compile Include="Dtos\CitiesDto.cs" />
     <Compile Include="Dtos\CondationsDto.cs" />
     <Compile Include="Dtos\ContactsDto.cs" />
@@ -465,6 +467,14 @@
     <Compile Include="Migrations\201809101124052_AddRelationBetweenEntitiesAndEntitiesTypes.Designer.cs">
       <DependentUpon>201809101124052_AddRelationBetweenEntitiesAndEntitiesTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809101130131_AddNewTableCalenders.cs" />
+    <Compile Include="Migrations\201809101130131_AddNewTableCalenders.Designer.cs">
+      <DependentUpon>201809101130131_AddNewTableCalenders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809101136246_AddIndexToCalenders.cs" />
+    <Compile Include="Migrations\201809101136246_AddIndexToCalenders.Designer.cs">
+      <DependentUpon>201809101136246_AddIndexToCalenders.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Allergies.cs" />
@@ -474,6 +484,7 @@
     <Compile Include="Models\BloodPressure.cs" />
     <Compile Include="Models\BookingType.cs" />
     <Compile Include="Models\Calenders.cs" />
+    <Compile Include="Models\CalendersDetails.cs" />
     <Compile Include="Models\Cities.cs" />
     <Compile Include="Models\Condations.cs" />
     <Compile Include="Models\Contacts.cs" />
@@ -788,6 +799,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809101124052_AddRelationBetweenEntitiesAndEntitiesTypes.resx">
       <DependentUpon>201809101124052_AddRelationBetweenEntitiesAndEntitiesTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809101130131_AddNewTableCalenders.resx">
+      <DependentUpon>201809101130131_AddNewTableCalenders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809101136246_AddIndexToCalenders.resx">
+      <DependentUpon>201809101136246_AddIndexToCalenders.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
