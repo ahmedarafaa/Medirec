@@ -16,7 +16,6 @@ namespace MediRec.Models
         public DbSet<Specialties> Specialties { get; set; }
         public DbSet<BookingType> BookingType { get; set; }
         public DbSet<Entities> Entities { get; set; }
-        public DbSet<EntitiesDoctors> EntitiesDoctors { get; set; }
         public DbSet<Patients> Patients { get; set; }
         public DbSet<Allergies> Allergies { get; set; }
         public DbSet<Condations> Condations { get; set; }
@@ -28,6 +27,7 @@ namespace MediRec.Models
         public DbSet<Contacts> Contacts { get; set; }
         public DbSet<Vaccines> Vaccines { get; set; }
         public DbSet<Immunizations> Immunizations { get; set; }
+        public DbSet<EntitiesTypes> EntitiesTypes { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

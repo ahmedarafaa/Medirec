@@ -11,6 +11,7 @@ namespace MediRec.Models
         public Doctors()
         {
             this.Specialties = new HashSet<Specialties>();
+            this.Entities = new HashSet<Entities>();
         }
 
         [Key]
@@ -89,6 +90,9 @@ namespace MediRec.Models
 
         [StringLength(1500)]
         public string ImageURL { get; set; }
+
+        public ICollection<Entities> Entities { get; set; }
+
 
         [StringLength(225)]
         public string CreatedBy { get; set; }

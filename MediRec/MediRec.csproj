@@ -225,7 +225,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\DoctorsController.cs" />
-    <Compile Include="Controllers\EntitiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImmunizationsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -238,7 +237,6 @@
     <Compile Include="Controllers\MediAPI\CountriesController.cs" />
     <Compile Include="Controllers\MediAPI\DoctorRegisterController.cs" />
     <Compile Include="Controllers\MediAPI\DoctorsController.cs" />
-    <Compile Include="Controllers\MediAPI\EntitiesController.cs" />
     <Compile Include="Controllers\MediAPI\HumanBodiesController.cs" />
     <Compile Include="Controllers\MediAPI\ImmunizationsController.cs" />
     <Compile Include="Controllers\MediAPI\MedicalDevicesController.cs" />
@@ -451,6 +449,22 @@
     <Compile Include="Migrations\201809101100321_AddRelationBetweenEntitiesAndAreas.Designer.cs">
       <DependentUpon>201809101100321_AddRelationBetweenEntitiesAndAreas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809101113237_dropEntitiesDoctors.cs" />
+    <Compile Include="Migrations\201809101113237_dropEntitiesDoctors.Designer.cs">
+      <DependentUpon>201809101113237_dropEntitiesDoctors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809101116312_AddRelationBetweenEntitiesAndDoctors.cs" />
+    <Compile Include="Migrations\201809101116312_AddRelationBetweenEntitiesAndDoctors.Designer.cs">
+      <DependentUpon>201809101116312_AddRelationBetweenEntitiesAndDoctors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809101122339_AddNewTableEntitiesTypes.cs" />
+    <Compile Include="Migrations\201809101122339_AddNewTableEntitiesTypes.Designer.cs">
+      <DependentUpon>201809101122339_AddNewTableEntitiesTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809101124052_AddRelationBetweenEntitiesAndEntitiesTypes.cs" />
+    <Compile Include="Migrations\201809101124052_AddRelationBetweenEntitiesAndEntitiesTypes.Designer.cs">
+      <DependentUpon>201809101124052_AddRelationBetweenEntitiesAndEntitiesTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Allergies.cs" />
@@ -459,13 +473,14 @@
     <Compile Include="Models\Areas.cs" />
     <Compile Include="Models\BloodPressure.cs" />
     <Compile Include="Models\BookingType.cs" />
+    <Compile Include="Models\Calenders.cs" />
     <Compile Include="Models\Cities.cs" />
     <Compile Include="Models\Condations.cs" />
     <Compile Include="Models\Contacts.cs" />
     <Compile Include="Models\Countries.cs" />
     <Compile Include="Models\Doctors.cs" />
     <Compile Include="Models\Entities.cs" />
-    <Compile Include="Models\EntitiesDoctors.cs" />
+    <Compile Include="Models\EntitiesTypes.cs" />
     <Compile Include="Models\HumanBody.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Immunizations.cs" />
@@ -761,6 +776,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809101100321_AddRelationBetweenEntitiesAndAreas.resx">
       <DependentUpon>201809101100321_AddRelationBetweenEntitiesAndAreas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809101113237_dropEntitiesDoctors.resx">
+      <DependentUpon>201809101113237_dropEntitiesDoctors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809101116312_AddRelationBetweenEntitiesAndDoctors.resx">
+      <DependentUpon>201809101116312_AddRelationBetweenEntitiesAndDoctors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809101122339_AddNewTableEntitiesTypes.resx">
+      <DependentUpon>201809101122339_AddNewTableEntitiesTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809101124052_AddRelationBetweenEntitiesAndEntitiesTypes.resx">
+      <DependentUpon>201809101124052_AddRelationBetweenEntitiesAndEntitiesTypes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
