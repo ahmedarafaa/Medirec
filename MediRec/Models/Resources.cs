@@ -18,6 +18,9 @@ namespace MediRec.Models
         [StringLength(1500)]
         public string ImageUrl { get; set; }
 
+        [DataType(DataType.Date)]
+        public DateTime? CreadtedDateTime { get; set; }
+
         public int UserId { get; set; }
     }
 }

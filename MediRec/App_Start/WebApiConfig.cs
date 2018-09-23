@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-using System.Web.Http.OData.Extensions;
-using System.Web.Http.Cors;
+using MediRec.Models;
+using Microsoft.AspNet.OData.Extensions;
+using Microsoft.AspNet.OData.Builder;
 
 namespace MediRec
 {
@@ -27,6 +26,26 @@ namespace MediRec
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
+
+            builder.EntitySet<Doctors>("Doctors");
+            builder.EntitySet<Entities>("Entities");
+            builder.EntitySet<Areas>("Areas");
+            builder.EntitySet<Cities>("Cities");
+            builder.EntitySet<Countries>("Countries");
+            builder.EntitySet<DoctorsEntities>("DoctorsEntities");
+            builder.EntitySet<EntitiesTypes>("EntitiesTypes");
+            builder.EntitySet<Specialties>("Specialties");
+            builder.EntitySet<SubSpecialities>("SubSpecialities");
+
+            config.MapODataServiceRoute("ODataRoute", "odata", builder.GetEdmModel());
+
+
+            config.EnsureInitialized();
+
+            config.Select().Expand().Filter().OrderBy().MaxTop(null).Count();
         }
+
     }
 }

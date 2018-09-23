@@ -30,6 +30,10 @@ namespace MediRec.Models
         public DbSet<EntitiesTypes> EntitiesTypes { get; set; }
         public DbSet<Calenders> Calenders { get; set; }
         public DbSet<CalendersDetails> CalendersDetails { get; set; }
+        public DbSet<SubSpecialities> SubSpecialities { get; set; }
+        public DbSet<DoctorsTitles> DoctorsTitles { get; set; }
+        public DbSet<PaymentTypes> PaymentTypes { get; set; }
+        public DbSet<DoctorsEntities> DoctorsEntities { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -47,11 +51,7 @@ namespace MediRec.Models
 
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
-            //modelBuilder.Conventions.Add<CascadeDeleteAttributeConvention>();
         }
 
-        //public System.Data.Entity.DbSet<MediRec.Models.Allergies> Allergies { get; set; }
-
-        //public System.Data.Entity.DbSet<MediRec.ViewModel.RoleViewModel> RoleViewModels { get; set; }
     }
 }

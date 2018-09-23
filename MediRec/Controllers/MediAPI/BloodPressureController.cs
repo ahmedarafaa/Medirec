@@ -8,7 +8,6 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using System.Web.Http.OData;
 using AutoMapper;
 using MediRec.Dtos;
 using MediRec.Models;
@@ -26,17 +25,17 @@ namespace MediRec.Controllers.MediAPI
         }
 
         // GET: api/BloodPressure/5
-        [ResponseType(typeof(BloodPressure))]
-        [EnableQuery(PageSize = 4)]
-        public IHttpActionResult GetBloodPressure(int id)
-        {
-            var bloodPressure = _context.BloodPressure.Where(b => b.UserId == id);
-            if (bloodPressure == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+        //[ResponseType(typeof(BloodPressure))]
+        //[EnableQuery(PageSize = 4)]
+        //public IHttpActionResult GetBloodPressure(int id)
+        //{
+        //    var bloodPressure = _context.BloodPressure.Where(b => b.UserId == id);
+        //    if (bloodPressure == null)
+        //        throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            //return Mapper.Map<BloodPressure, BloodPressureDto>(bloodPressure);
-            return Ok(bloodPressure);
-        }
+        //    //return Mapper.Map<BloodPressure, BloodPressureDto>(bloodPressure);
+        //    return Ok(bloodPressure);
+        //}
 
         [Route("api/GetBloodPressureDetails/{userId}")]
         [ResponseType(typeof(BloodPressure))]

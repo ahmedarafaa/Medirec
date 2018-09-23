@@ -13,6 +13,18 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Areas.AreaCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cities.CountryCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Countries.CountryCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GetEntitiesTypes.EntitiesTypesCode)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.EntityCode)
         </th>
         <th>
@@ -26,6 +38,18 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Areas.AreaCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cities.CountryCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Countries.CountryCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GetEntitiesTypes.EntitiesTypesCode)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.EntityCode)
         </td>

@@ -20,7 +20,7 @@ namespace MediRec
         {
             //Api
             GlobalConfiguration.Configuration.MessageHandlers.Add(new APIKeyMessageHandler());
-            
+
             //Auto Mapper
             Mapper.Initialize(c => c.AddProfile<MappingProfile>());
 

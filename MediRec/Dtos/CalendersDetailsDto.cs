@@ -25,5 +25,8 @@ namespace MediRec.Dtos
         public string DayName { get; set; }
 
         public DateTime? Date { get; set; }
+
+        public bool IsReserved { get; set; }
+
     }
 }

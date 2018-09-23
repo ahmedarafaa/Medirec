@@ -1,19 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
-using System.Web.Http.OData;
 using AutoMapper;
 using MediRec.Dtos;
 using MediRec.Models;
+using Microsoft.AspNet.OData;
 
 namespace MediRec.Controllers.MediAPI
 {
@@ -28,7 +25,7 @@ namespace MediRec.Controllers.MediAPI
         }
 
         // GET: api/Resources/5
-        [EnableQuery(PageSize = 4)]
+        [EnableQuery(PageSize = 10)]
         [ResponseType(typeof(Resources))]
         public IHttpActionResult GetResources(int id)
         {

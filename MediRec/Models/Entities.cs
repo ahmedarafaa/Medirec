@@ -8,11 +8,6 @@ namespace MediRec.Models
 {
     public class Entities
     {
-        public Entities()
-        {
-            this.Doctors = new HashSet<Doctors>();
-        }
-
         [Key]
         public int EntityId { get; set; }
 
@@ -38,9 +33,17 @@ namespace MediRec.Models
         public int AreaId { get; set; }
         public Areas Areas { get; set; }
 
-        public ICollection<Doctors> Doctors { get; set; }
+        [Required]
+        [StringLength(1000)]
+        public string AddressEn { get; set; }
+
+        [Required]
+        [StringLength(1000)]
+        public string AddressAr { get; set; }
 
         public int EntitiesTypesId { get; set; }
         public EntitiesTypes GetEntitiesTypes { get; set; }
+
+        public virtual ICollection<DoctorsEntities> DoctorsEntities { get; set; }
     }
 }

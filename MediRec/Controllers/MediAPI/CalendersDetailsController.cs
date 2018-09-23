@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using MediRec.Models;
+using Microsoft.AspNet.OData;
 
 namespace MediRec.Controllers.MediAPI
 {
@@ -18,14 +15,70 @@ namespace MediRec.Controllers.MediAPI
 
 
         // GET: api/CalendersDetails/5
-        [Route("api/CalendersDetails/{doctorId}")]
+        [EnableQuery]
+        //[Route("api/CalendersDetails/{doctorId}/{entityId}")]
         [ResponseType(typeof(CalendersDetails))]
-        public IHttpActionResult GetCalendersDetails(int doctorId, int entityId)
+        public IHttpActionResult GetCalendersDetails(/*int doctorId, int entityId*/)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
 
-            var calendersDetails = _context.CalendersDetails.Where(c => c.DoctorId == doctorId);
+            //var calendersDetails = _context.CalendersDetails.Where(c => c.DoctorId == doctorId & c.EntityId == entityId);
+
+            var calendersDetails =
+                from c in _context.CalendersDetails
+                    //.Where(c => c.DoctorId == doctorId & c.EntityId == entityId)
+                orderby c.Date
+                select new
+                {
+                    c.CalendersDetailsId,
+                    c.CalendersId,
+                    c.DoctorId,
+                    c.EntityId,
+                    c.Date,
+                    c.DayName,
+                    c.TimeFrom,
+                    c.TimeTo,
+                    c.IsReserved
+                };
+
+            //var calender = from c in _context.Calenders
+            //               //join cd in _context.CalendersDetails on c.CalendersId equals cd.CalendersId
+            //               select new
+            //               {
+            //                   c.DoctorId,
+            //                   c.EntityId,
+            //                   //c.CalendersId,
+            //                   Date = _context.CalendersDetails.Where(cd => cd.CalendersId == c.CalendersId).Select(cd => cd.Date)
+            //               };
+
+            //var calender =
+            //    from cd in _context.CalendersDetails.Where(cd => cd.DoctorId == 89 & cd.EntityId == 21)
+            //    orderby cd.Date
+            //    select new
+            //    {
+            //        cd.DoctorId,
+            //        cd.EntityId,
+            //        cd.DayName,
+            //        cd.Date,
+            //        TimeFrom = _context.CalendersDetails
+            //            .Where(d => d.Date == cd.Date & d.DoctorId == cd.DoctorId & d.EntityId == cd.EntityId)
+            //            .Select(d => d.TimeFrom)
+            //    };
+
+            //var calender =
+            //    from c in _context.Calenders
+            //    select new
+            //    {
+            //        c.DoctorId,
+            //        c.EntityId
+
+            //    };
+
+            //var calender = 
+            //    from c in _context.Calenders
+            //    join cd in _context.CalendersDetails on c.CalendersId equals cd.CalendersId into g
+            //    select new {}
 
             if (calendersDetails == null)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -33,11 +86,11 @@ namespace MediRec.Controllers.MediAPI
             return Ok(calendersDetails);
         }
 
-        //EntityType --> 1 --> Calender from to
-        //EntityType --> 2 --> Generate Calender per minutes 
-        [Route("api/CalendersDetails/{doctorId}/{entityId}/{generateDays}/{entityType}")]
+        //EntityType --> 0 --> Calender from to
+        //EntityType --> 1 --> Generate Calender per minutes 
+        [Route("api/CalendersDetails/{doctorId}/{entityId}/{generateDays}/{calenderTypeId}")]
         [ResponseType(typeof(CalendersDetails))]
-        public IHttpActionResult PostCalendersDetails(int doctorId, int entityId, int generateDays, int entityType)
+        public IHttpActionResult PostCalendersDetails(int doctorId, int entityId, int generateDays, int calenderTypeId)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -55,8 +108,8 @@ namespace MediRec.Controllers.MediAPI
             if (calenders == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
 
-            //Generate calender when entitytype = 1
-            if (entityType == 1)
+            //Generate calender when calenderTypeId = 0
+            if (calenderTypeId == CalenderTypes.BasicCalender)
             {
                 for (int i = 0; i < generateDays; i++)
                 {
@@ -81,9 +134,9 @@ namespace MediRec.Controllers.MediAPI
             }
 
 
-            //Generate calender when entitytype = 2
+            //Generate calender when calenderTypeId = 1
 
-            if (entityType == 2)
+            if (calenderTypeId == CalenderTypes.TimerCalender)
             {
                 for (int i = 0; i < generateDays; i++)
                 {

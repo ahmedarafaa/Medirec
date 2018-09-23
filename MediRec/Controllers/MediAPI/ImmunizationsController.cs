@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using System.Web.Http.OData;
 using AutoMapper;
 using MediRec.Dtos;
 using MediRec.Models;
+using Microsoft.AspNet.OData;
 
 namespace MediRec.Controllers.MediAPI
 {
@@ -20,28 +16,26 @@ namespace MediRec.Controllers.MediAPI
         private ApplicationDbContext _context = new ApplicationDbContext();
 
         // GET: api/Immunizations
+
+        [HttpGet]
+        [Route("api/Immunizations")]
         public IEnumerable<ImmunizationsDto> GetImmunizations()
         {
-            return _context.Immunizations.ToList().Select(Mapper.Map<Immunizations,ImmunizationsDto>);
+            return _context.Immunizations.ToList().Select(Mapper.Map<Immunizations, ImmunizationsDto>);
         }
 
-        // GET: api/Immunizations/5
+        //GET: api/Immunizations/5
         [EnableQuery(PageSize = 10)]
+        [HttpGet]
         [Route("api/Immunizations/{userId}")]
         [ResponseType(typeof(Immunizations))]
         public IHttpActionResult GetImmunizations(int userId)
         {
-            //var immunizations = _context.Immunizations.Include(i => i.UserId == userId);
-
-            //if (immunizations == null)
-            //    throw new HttpResponseException(HttpStatusCode.NotFound);
-
-            //return Mapper.Map<Immunizations,ImmunizationsDto>(immunizations);
-
             var immunizations = _context.Immunizations.Where(im => im.UserId == userId)
-                .Join(_context.Vaccines,i => i.VaccineId,v => v.VaccineId,
+                .Join(_context.Vaccines, i => i.VaccineId, v => v.VaccineId,
                 (immunization, vaccine) => new
                 {
+                    immunizationId = immunization.ImmunizationId,
                     VaccineName = vaccine.Name,
                     immunization.DateGiven,
                     immunization.AdministratedBy,
@@ -79,8 +73,10 @@ namespace MediRec.Controllers.MediAPI
         }
 
         // PUT: api/Immunizations/5
+        [HttpPut]
+        [Route("api/Immunizations/{id}")]
         [ResponseType(typeof(void))]
-        public void PutImmunizations(int id, ImmunizationsDto immunizationsDto)
+        public void PutImmunizations(int id, [FromBody]ImmunizationsDto immunizationsDto)
         {
             if (!ModelState.IsValid)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -96,6 +92,8 @@ namespace MediRec.Controllers.MediAPI
         }
 
         // POST: api/Immunizations
+        [HttpPost]
+        [Route("api/Immunizations")]
         [ResponseType(typeof(Immunizations))]
         public ImmunizationsDto PostImmunizations(ImmunizationsDto immunizationsDto)
         {
@@ -112,6 +110,8 @@ namespace MediRec.Controllers.MediAPI
         }
 
         // DELETE: api/Immunizations/5
+        [HttpDelete]
+        [Route("api/Immunizations/{id}")]
         [ResponseType(typeof(Immunizations))]
         public IHttpActionResult DeleteImmunizations(int id)
         {
